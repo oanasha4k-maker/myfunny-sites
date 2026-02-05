@@ -1,249 +1,334 @@
-import { useMemo, useState } from "react";
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ANAS Fun Days • Valentine Week Roast Station (Single File)</title>
+  <link rel="canonical" href="https://anasfundays786.com" />
+  <meta name="theme-color" content="#ff3b7b" />
+  <meta property="og:title" content="ANAS Fun Days • Valentine Week Roast Station" />
+  <meta property="og:url" content="https://anasfundays786.com" />
+  <style>
+    :root{
+      --heart-red:#ff3b7b;--heart-pink:#ff7ab6;--heart-purple:#9b5cff;--ink:#0f0f14
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+      color: #1f2937;
+      background:
+        radial-gradient(1200px 600px at -10% -10%, rgba(255, 238, 246, .9), transparent 60%),
+        radial-gradient(900px 500px at 110% -20%, rgba(237, 240, 255, .9), transparent 60%),
+        radial-gradient(800px 400px at 50% 120%, rgba(255, 245, 230, .9), transparent 60%);
+      overflow-x:hidden;
+    }
+    ::selection{background:#ffe0ec;color:#9b1145}
+    .container{max-width:1100px;margin:0 auto;padding:24px}
 
-const dayData = [
-  {
-    id: "rose",
-    label: "Rose Day",
-    color: "from-rose-400 to-rose-600",
-    jokes: [
-      "{name} ne rose ka scene aisa banaya, phool nahi mila par style full on! 🌹😎",
-      "{name} ka rose: ‘Phool to nahi, par smile free mein le lo!’ 🌹😆",
-      "{name} ne gulab nahi diya, par pose deke class ko confuse kar diya! 🌹📸😂",
-    ],
-  },
-  {
-    id: "propose",
-    label: "Propose Day",
-    color: "from-pink-400 to-fuchsia-600",
-    jokes: [
-      "{name} ne propose kiya: ‘Tiffin share karoge?’—aur wo haan bol bhi gaya! 💌😜",
-      "{name} ka propose level: ‘Marks mein partner banogi?’ 🤝😂",
-      "{name} ne propose kiya, reply aaya: ‘Exam ke baad sochenge!’ 📚😅",
-      "{name} ka proposal: ‘Pencil do’, aur crush list mein entry fix! ✏️😆",
-    ],
-  },
-  {
-    id: "chocolate",
-    label: "Chocolate Day",
-    color: "from-amber-400 to-orange-600",
-    jokes: [
-      "{name} ne chocolate khud hi kha li, wrapper deke bola: ‘Surprise!’ 🍫🤣",
-      "{name} ka plan: ‘Do chocolate, ek bhi mujhe!’ 😋🍫",
-      "{name} ne chocolate di, saamne se reply: ‘Diet chal rahi hai!’ 😭🍫",
-    ],
-  },
-  {
-    id: "teddy",
-    label: "Teddy Day",
-    color: "from-amber-300 to-yellow-500",
-    jokes: [
-      "{name} ne teddy diya, phir khud bol pada: ‘Mujhe bhi hug chahiye!’ 🧸😂",
-      "{name} ka teddy itna bada tha, bench hi gayab! 🧸🤣",
-      "{name} ne teddy ko homework dikha diya, teddy faint! 🧸📚😵",
-    ],
-  },
-  {
-    id: "promise",
-    label: "Promise Day",
-    color: "from-sky-400 to-indigo-600",
-    jokes: [
-      "{name} ka promise: ‘Kal se time pe aaunga’… aur kal phir late! ⏰😆",
-      "{name} ne kaha: ‘No mobile in class’… 5 min baad selfie! 🤳😂",
-      "{name} ne promise kiya: ‘Assignment khud karunga’… aur ChatGPT ko bula liya! 🤖😜",
-    ],
-  },
-  {
-    id: "hug",
-    label: "Hug Day",
-    color: "from-emerald-400 to-green-600",
-    jokes: [
-      "{name} ne hug diya, par backpack itna bada tha ki hug hi nahi hua! 🎒😂",
-      "{name} ka hug: 2 second ka, par yaad 2 saal ka! 🤗✨",
-      "{name} ne hug kiya aur bola: ‘Attendance bhi lagegi?’ 🤗📒😆",
-      "{name} ka hug dekh ke bola gaya: ‘Bhai sweater pehna hai, feel nahi aa raha!’ 🧥😂",
-    ],
-  },
-  {
-    id: "kiss",
-    label: "Kiss Day",
-    color: "from-red-400 to-rose-600",
-    jokes: [
-      "{name} ne Kiss Day pe bola: ‘Bhai tu single hai, bina bataye mingle ho gaya!’ 😏💥",
-      "{name} ka scene: ‘Flying kiss’—aur samne wali ne catch hi nahi kiya! 💋😂",
-      "{name} ne kiss ka plan banaya, par bell baj gayi… recess over! 🔔😅",
-      "{name} ka attempt dekh ke aunty boli: ‘Pehle homework!’ 📒🤣",
-    ],
-  },
-  {
-    id: "valentine",
-    label: "Valentine Day",
-    color: "from-violet-500 to-purple-700",
-    jokes: [
-      "{name} ne gift diya, receiver bola: ‘Receipt hai?’ 🎁😆",
-      "{name} ka status: ‘In a relation… with marks!’ 📝💘😂",
-      "{name} ne propose kiya, reply aaya: ‘Group project mein add kar lo!’ 🤝💘😜",
-      "{name} ka plan dekh ke dost bole: ‘Bhai, tu toh trailer hai, picture baad mein!’ 🎬🤣",
-    ],
-  },
-];
+    /* Header */
+    header{text-align:center;padding-top:28px}
+    h1{margin:0;font-size:28px;line-height:1.15;color:#be185d;font-weight:900;letter-spacing:.2px;animation:popIn 420ms cubic-bezier(.2,.7,.2,1.1)}
+    .sub{margin-top:6px;color:#6b7280;font-size:14px}
+    .badges{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
 
-const baseNameRoasts = [
-  "{name} ka swag dekh ke lagta hai mirror bhi sharma gaya! 😎🪞",
-  "{name} ki entry ho jaye to class ka volume 200% ho jata! 🔊😂",
-  "{name} ka confidence aisa, answer wrong bhi ho to taaliyan milti! 👏😆",
-  "{name} ka style: zero tension, full attention! 😜✨",
-  "{name} ka naam hi kaafi hai, roll number to bas show-off hai! 📛🤣",
-];
+    /* Domain neon badge */
+    .domain-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.55rem .85rem;border-radius:14px;background:linear-gradient(135deg,rgba(255,59,123,.12),rgba(155,92,255,.12));border:1.5px dashed rgba(255,59,123,.55);color:#6b0c9b;text-decoration:none;font-weight:900;letter-spacing:.2px;box-shadow:0 10px 28px rgba(155,92,255,.15),inset 0 0 0 1px rgba(255,255,255,.5);backdrop-filter:blur(8px);transition:transform .15s ease,filter .2s ease}
+    .domain-badge:hover{transform:translateY(-2px) scale(1.02);filter:brightness(1.07) saturate(1.1)}
 
-export function App() {
-  const [name, setName] = useState("");
-  const [selectedDay, setSelectedDay] = useState(dayData[0]);
-  const [joke, setJoke] = useState("");
-  const [pulseKey, setPulseKey] = useState(0);
+    /* Instagram glassy badge */
+    .insta-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .75rem;border-radius:9999px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.55));border:1px solid rgba(255,122,182,.55);color:#b11052;text-decoration:none;font-weight:800;box-shadow:0 6px 20px rgba(255,58,123,.18),inset 0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(8px);animation:pulseGlow 1500ms ease-in-out infinite}
+    .insta-badge:hover{filter:saturate(1.1) brightness(1.05)}
 
-  const greetingName = useMemo(() => (name.trim() ? name.trim() : "Dost"), [name]);
+    /* Cards */
+    .card{background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #ffd1e1;border-radius:18px;box-shadow:0 14px 30px rgba(255,58,123,.12);padding:18px}
 
-  const handleDayClick = (dayId: string) => {
-    const day = dayData.find((item) => item.id === dayId) ?? dayData[0];
-    const jokes = day.jokes;
-    const nextJoke = jokes[Math.floor(Math.random() * jokes.length)].replace(
-      "{name}",
-      greetingName
-    );
-    setSelectedDay(day);
-    setJoke(nextJoke);
-    setPulseKey((prev) => prev + 1);
-  };
+    /* Layout */
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
+    @media (max-width:860px){.grid{grid-template-columns:1fr}}
 
-  const randomNameRoast = useMemo(() => {
-    const pick = baseNameRoasts[Math.floor(Math.random() * baseNameRoasts.length)];
-    return pick.replace("{name}", greetingName);
-  }, [greetingName, joke]);
+    /* Inputs + Buttons */
+    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+    input[type="text"]{flex:1;height:48px;min-width:220px;border-radius:12px;border:1px solid #f9a8d4;padding:0 14px;outline:none;background:rgba(255,255,255,.8)}
+    input[type="text"]:focus{box-shadow:0 0 0 3px rgba(244,114,182,.35)}
+    .btn-fancy{position:relative;overflow:hidden;transition:transform .15s ease, box-shadow .2s ease;color:#fff;border:none;cursor:pointer}
+    .btn-fancy::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0) 0%, rgba(255,255,255,.35) 50%, rgba(255,255,255,0) 100%);transform:translateX(-120%);transition:transform .6s ease}
+    .btn-fancy:hover{transform:translateY(-2px) scale(1.01)}
+    .btn-fancy:hover::after{transform:translateX(120%)}
+    .btn-lg{height:48px;padding:0 18px;border-radius:12px;font-weight:700;background:linear-gradient(90deg,#f0abfc,#fb7185,#fb7185)}
+    .btn-lg:disabled{opacity:.6;cursor:not-allowed}
 
-  return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white">
-      <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-12">
-        <header className="flex flex-wrap items-center justify-between gap-6">
-          <div className="space-y-3">
-            <p className="text-sm uppercase tracking-[0.3em] text-rose-200/80">
-              Valentine Week Fun Selector
-            </p>
-            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
-              Select your day, get a filmy joke! 💥🤣
-            </h1>
-            <p className="max-w-xl text-base text-slate-200/80">
-              Naam likho, day choose karo, aur har click pe naya funny dialogue! (School friendly
-              roast-style jokes 😄)
-            </p>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-center shadow-lg shadow-black/30">
-            <p className="text-sm text-slate-200/70">Made by</p>
-            <p className="text-lg font-semibold text-rose-200">ANAS</p>
-            <a
-              href="https://instagram.com/phising.attaker"
-              target="_blank"
-              rel="noreferrer"
-              className="mt-3 inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-300/10 px-4 py-1 text-sm font-semibold text-emerald-200 shadow-[0_0_15px_rgba(16,185,129,0.5)] transition hover:scale-105 hover:bg-emerald-300/20"
-            >
-              @phising.attaker
-            </a>
-          </div>
-        </header>
+    /* Day buttons */
+    .days{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+    .day{padding:8px 12px;border-radius:9999px;border:1px solid #fbcfe8;background:#fff;color:#be185d;font-weight:600;font-size:14px;transition:transform .15s ease, border-color .15s ease}
+    .day:hover{transform:scale(1.02);border-color:#f472b6}
+    .day.active{background:#db2777;color:#fff;border-color:#db2777;box-shadow:0 8px 26px rgba(219,39,119,.25)}
 
-        <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
-          <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/30">
-            <div className="space-y-3">
-              <label className="text-sm uppercase tracking-[0.2em] text-slate-200/70">
-                Pehle apna naam likho
-              </label>
-              <div className="flex flex-col gap-3 sm:flex-row">
-                <input
-                  value={name}
-                  onChange={(event) => setName(event.target.value)}
-                  placeholder="Type your name..."
-                  className="h-12 flex-1 rounded-2xl border border-white/10 bg-slate-950/70 px-4 text-base text-white outline-none transition focus:border-rose-300 focus:ring-2 focus:ring-rose-400/40"
-                />
-                <button
-                  onClick={() => handleDayClick(selectedDay.id)}
-                  className="group relative h-12 overflow-hidden rounded-2xl bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-500 px-6 text-sm font-semibold uppercase tracking-[0.2em] shadow-lg shadow-rose-500/30 transition hover:-translate-y-0.5 hover:shadow-xl"
-                >
-                  <span className="relative z-10 flex items-center gap-2">
-                    <span className="inline-block h-2 w-2 animate-ping rounded-full bg-white/70" />
-                    Masti Button
-                  </span>
-                  <span className="absolute inset-0 -translate-x-full bg-white/30 transition duration-500 group-hover:translate-x-full" />
-                </button>
-              </div>
-            </div>
+    /* Joke box */
+    .jokeBox{min-height:106px;border:1px solid #ffe4ee;background:#fff2f7;border-radius:14px;padding:16px}
+    .joke{font-size:18px;line-height:1.5;color:#3f3f46}
+    .hint{color:#6b7280;font-size:14px}
 
-            <div className="space-y-4">
-              <p className="text-sm uppercase tracking-[0.2em] text-slate-200/70">
-                Select your day
-              </p>
-              <div className="grid gap-3 sm:grid-cols-2">
-                {dayData.map((day) => (
-                  <button
-                    key={day.id}
-                    onClick={() => handleDayClick(day.id)}
-                    className={`rounded-2xl border border-white/10 bg-gradient-to-r ${day.color} px-4 py-3 text-left text-sm font-semibold shadow-lg transition hover:-translate-y-1 hover:shadow-xl active:scale-95`}
-                  >
-                    {day.label}
-                  </button>
-                ))}
-              </div>
-            </div>
+    /* Credits */
+    .credits h3{margin:0 0 6px 0;font-size:18px;color:#27272a}
+    .credits .by{font-weight:600;color:#3f3f46}
 
-            <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
-              <p className="text-sm uppercase tracking-[0.2em] text-rose-200/70">
-                Today’s Highlight
-              </p>
-              <h2 className="mt-2 text-2xl font-bold text-white">
-                {selectedDay.label}
-              </h2>
-              <p className="mt-3 text-base text-slate-200/80">
-                {joke ||
-                  `Hello ${greetingName}! Click any day and get a fresh joke with emojis 😄🎉`}
-              </p>
-            </div>
-          </div>
+    /* Animations */
+    @keyframes popIn{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05);opacity:1}100%{transform:scale(1)}}
+    @keyframes floatUp{0%{transform:translateY(0) scale(.8) rotate(0);opacity:1}100%{transform:translateY(-120vh) scale(1.2) rotate(20deg);opacity:0}}
+    @keyframes pulseGlow{0%,100%{text-shadow:0 0 0 rgba(255,58,123,0)}50%{text-shadow:0 0 16px rgba(255,58,123,.45)}}
 
-          <div className="flex flex-col gap-6">
-            <div
-              key={pulseKey}
-              className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 p-6 shadow-2xl shadow-black/30"
-            >
-              <p className="text-sm uppercase tracking-[0.2em] text-slate-200/60">
-                Naam Roast Corner
-              </p>
-              <p className="mt-4 text-2xl font-bold text-amber-200">
-                {randomNameRoast}
-              </p>
-              <p className="mt-3 text-sm text-slate-300/70">
-                Har click pe vibe change, roast friendly mode on! 😎
-              </p>
-            </div>
-
-            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 p-6 text-center">
-              <p className="text-sm uppercase tracking-[0.2em] text-slate-200/60">
-                Insta Vibe
-              </p>
-              <a
-                href="https://instagram.com/phising.attaker"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-300/40 bg-gradient-to-r from-emerald-400/20 via-teal-300/20 to-cyan-300/20 px-6 py-2 text-xl font-extrabold text-emerald-100 shadow-[0_0_25px_rgba(16,185,129,0.7)] transition hover:scale-105 hover:shadow-[0_0_35px_rgba(16,185,129,0.9)]"
-              >
-                <span className="animate-pulse">@phising.attaker</span>
-                <span className="text-2xl">✨</span>
-              </a>
-              <p className="mt-3 text-sm text-slate-300/70">
-                Share this page with friends and make them laugh! 😆✨
-              </p>
-            </div>
-          </div>
-        </section>
-      </div>
+    /* Heart particles */
+    #burst-host{position:fixed;inset:0;pointer-events:none}
+    .sparkle-heart{position:fixed;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1));animation:floatUp var(--dur,1200ms) ease-in forwards;z-index:50}
+  </style>
+</head>
+<body>
+  <div id="burst-host"></div>
+  <header>
+    <h1 id="greeting">Valentine Week LOL Station</h1>
+    <p class="sub">Naam daalo, day choose karo, aur bezzati wali roast lo – har click pe hearts udte hain! 💘</p>
+    <div class="badges">
+      <a class="domain-badge" href="https://anasfundays786.com" target="_blank" rel="noreferrer" aria-label="Open anasfundays786.com">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+          <path d="M12 3a9 9 0 100 18 9 9 0 000-18Zm0 2a7 7 0 110 14 7 7 0 010-14Z"/>
+        </svg>
+        <span>anasfundays786.com</span>
+      </a>
+      <a class="insta-badge" href="https://instagram.com/phising.attaker" target="_blank" rel="noreferrer" aria-label="Open Instagram: @phising.attaker">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
+          <defs>
+            <linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3b7b"/><stop offset="100%" stop-color="#9b5cff"/></linearGradient>
+          </defs>
+          <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#ig)" stroke-width="2"/>
+          <circle cx="12" cy="12" r="4" stroke="url(#ig)" stroke-width="2"/>
+          <circle cx="17" cy="7" r="1.2" fill="#ff7ab6"/>
+        </svg>
+        <span>@phising.attaker</span>
+      </a>
     </div>
-  );
-}
-        
+  </header>
+
+  <main class="container" id="app">
+    <section id="start-card" class="card" aria-live="polite">
+      <label for="name-input" style="display:block;font-weight:600;color:#374151;margin-bottom:8px">Pehle apna naam likho</label>
+      <div class="row">
+        <input id="name-input" type="text" placeholder="Jaise: Ansh, Priya, etc." />
+        <button id="start-btn" class="btn-fancy btn-lg" disabled>Start 🚀</button>
+      </div>
+      <p class="hint" style="margin-top:10px">Button dabao aur magic dekho – har click pe hearts udte hain! ✨</p>
+    </section>
+
+    <section id="jokes-card" class="grid" style="display:none">
+      <section class="card">
+        <div id="days" class="days"></div>
+        <div class="row" style="margin:6px 0 10px 0;gap:8px;align-items:center">
+          <span class="hint">Roast Intensity:</span>
+          <button id="lvl-mild" class="day">Mild</button>
+          <button id="lvl-medium" class="day active">Medium</button>
+          <button id="lvl-savage" class="day">Savage</button>
+          <button id="music" class="day" title="Play/Stop a tiny loop">Music: Off</button>
+        </div>
+        <div class="jokeBox">
+          <p id="joke" class="joke"><span id="emoji">✨</span> <span id="joke-text" style="margin-left:6px;color:#3f3f46">Koi day select karo, phir niche button dabao – naam ke saath bezzati wali roast aayegi! 😄</span></p>
+        </div>
+        <div class="row" style="margin-top:12px;align-items:center">
+          <button id="joke-btn" class="btn-fancy btn-lg" style="background:linear-gradient(90deg,#a21caf,#ec4899,#ef4444);display:inline-flex;gap:8px;align-items:center">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden><path d="M12 21s-5.052-3.36-8.016-6.324C.912 11.604 1.14 7.8 3.6 5.52c2.208-2.052 5.4-1.344 6.996.552C12.192 4.176 15.384 3.468 17.592 5.52c2.46 2.28 2.688 6.084-.384 9.156C17.052 17.64 12 21 12 21z"/></svg>
+            <span>Bezzati Lao!</span>
+          </button>
+          <span class="hint">Har baar alag roast, har click pe hearts! 💗</span>
+        </div>
+      </section>
+      <aside class="card credits">
+        <h3>Credits</h3>
+        <p class="by">Made by ANAS</p>
+        <a class="insta-badge" href="https://instagram.com/phising.attaker" target="_blank" rel="noreferrer">@phising.attaker</a>
+        <div class="hint" style="margin-top:10px">Insta badge pe click karo — direct profile open ho jayega! ✨</div>
+      </aside>
+    </section>
+  </main>
+
+  <footer style="text-align:center;color:#6b7280;font-size:12px;padding:18px 0 28px">Masti only. Static single-file hai — direct GitHub pe host kar sakte ho.</footer>
+
+  <script>
+    (function(){
+      const DAYS=["Rose Day","Propose Day","Chocolate Day","Teddy Day","Promise Day","Hug Day","Kiss Day","Valentine’s Day"];
+      const EMOJIS=["🤣","😂","😹","😆","🤭","💀","😝","✨","💘","😜"];
+      const JOKES_BY_INTENSITY={
+        "Rose Day": {
+          mild: [
+            "{name}, tere liye rose nahi, smile hi kaafi – par attitude thoda kam karo 😆",
+            "Rose diya {name} ko, phool bola: thoda pyaar se rakhna bhai 😂",
+            "Gulab ka khushboo achhi, par {name} ka drama aur bhi tez 😜",
+          ],
+          medium: [
+            "{name}, tere liye rose nahi, cactus hi sahi — attitude aur spikes dono match karte hain 💀",
+            "Aaj Rose Day par {name} ko phool diya, phool bola: 'bhai mujhe bhi respect chahiye' 😂",
+            "Gulab mehenga sahi, par {name} ka expectation usse bhi mehenga — delivery zero 😹",
+          ],
+          savage: [
+            "{name} ke liye rose nahi, warning label bhejta hoon: 'Handle with overacting' 💀",
+            "Phool ne {name} ko dekha aur bola: mere petals bhi itne sensitive nahi jitna ego 😭",
+            "Rose bhi soch raha: {name} ke saath rehna kaam hai ya punishment? 🤣",
+          ]
+        },
+        "Propose Day": {
+          mild: [
+            "Propose karu {name} ko? Dimag: pehle friendship level upgrade to karo 🤭",
+            "{name} ka reply: 'dekhenge' – accha, calendar me kab? 😆",
+            "Confidence low, hopes high – classic {name} move 😂",
+          ],
+          medium: [
+            "Propose karu {name} ko? Dimag: 'bhai izzat bachaa, seen pe chhod de' 🤣",
+            "{name} ka 'I’ll think about it' utna hi real hai jitna free WiFi ka password 'password' 💀",
+            "Proposal bheja, {name} ne archive me daal diya — yaadon ko bhi ignore kardiya 😂",
+          ],
+          savage: [
+            "Proposal bhejne se pehle {name} ko network to milwa do – reply aata hi nahi 😹",
+            "{name} ka dil bhi trial version – terms padho, access limited 🤣",
+            "Kismat bhi kehti: {name}? beta sapna dekh, result mat expect kar 💀",
+          ]
+        },
+        "Chocolate Day": {
+          mild: [
+            "{name} ke liye dairy milk, par calories ko ignore mode pe rakhna 🤭",
+            "Chocolate share karni thi, {name} ne motivation share kardi 😂",
+            "{name} + chocolate = sweet combo, bas lecture free me milta hai 😆",
+          ],
+          medium: [
+            "Chocolate {name} ko di, reply: 'diet pe hoon'… raat ko saari khaa ke bolta/bolti 'calories delete kar dena' 😆",
+            "Wrapper pe likh diya: 'For {name}: hopes not included' 😹",
+            "{name} ke saath sharing = tum chocolate do, woh lecture de 🤭",
+          ],
+          savage: [
+            "Chocolate di, {name} ne kaha: 'trust pe kaam karo' – aur khud saari khaa li 😂",
+            "{name} ka portion size = 'thoda' matlab pura box 💀",
+            "Sweet tooth nahi, sweet excuse zyada – classic {name} move 😜",
+          ]
+        },
+        "Teddy Day": {
+          mild: [
+            "Teddy cute, {name} cuter – bas confusion thoda kam rakho 😄",
+            "{name} ka teddy se pyaar: 10/10, logon se patience: 2/10 😂",
+            "Teddy ko hug, drama ko mute – deal? 🤭",
+          ],
+          medium: [
+            "Teddy ne {name} ko dekh ke bola: 'main cute hoon, tu confuse' 💀",
+            "{name} ka 'cute act' dekh ke teddy ne resign de diya: 'emotionally overworked' 😂",
+            "Gift diya teddy, {name}: 'return policy?' — trust issues pro max 😝",
+          ],
+          savage: [
+            "Teddy bhi bol raha: {name}, please mujhe shelf pe hi chhod do 😭",
+            "Cuteness demand high, supply low – {name} ka market crash 💀",
+            "Teddy soft, {name} ke replies harder than maths 😂",
+          ]
+        },
+        "Promise Day": {
+          mild: [
+            "{name} ka promise tracker: in-progress, optimism: full 😇",
+            "Kal se sudharoonga/sudharoongi – reminder set kar diya? 🤭",
+            "Small steps bhi chalega, bas start to karo {name} 😌",
+          ],
+          medium: [
+            "{name} ka promise: 'kal se sudhar jaunga/jaungi' — woh kal kabhi aata hi nahi 🤣",
+            "Accountability check: {name} ke promises cloud me save, delivery kabhi nahi 😹",
+            "{name} ka 'always there' utna hi stable hai jitna April ka weather 💘",
+          ],
+          savage: [
+            "Promises ka OTP {name} ke phone pe aata hi nahi 😂",
+            "{name} ke promises bhi 'skip ads in 5 sec' jaise – kabhi skip ho jate hain 💀",
+            "Words premium, actions trial – {name} edition 🤣",
+          ]
+        },
+        "Hug Day": {
+          mild: [
+            "{name} ka hug = low battery mode, par pyaar original 😄",
+            "Free hugs – {name} ka queue manage karo bhai 🤭",
+            "Hug de, stress gayab – bas thoda feel add karo {name} 😊",
+          ],
+          medium: [
+            "{name} ka hug itna dry ki lagta hai balance low — emotions ka recharge kara le 😂",
+            "Free hugs announce kiye, {name} ka server down — token milte rahe, hug nahi 😆",
+            "Virtual hug bheja, {name} ne 'K' reply karke bandwidth ko bhi hurt kar diya 🤭",
+          ],
+          savage: [
+            "{name} ka hug manual me likha: 'use at own risk – feelings missing' 💀",
+            "Token leke aa, {name} ka hug counter slow hai 😂",
+            "Hug milega jab network 'Feel-4G' pe aayega – {name} pls upgrade 🤣",
+          ]
+        },
+        "Kiss Day": {
+          mild: [
+            "Confidence build karo {name}, filter se zyada asli smile achhi lagti hai 😊",
+            "Practice mirror ke saath theek hai, real me courage chahiye 😄",
+            "Sanitizer ready, bas confidence on karo {name} 🤭",
+          ],
+          medium: [
+            "Bhai tu to single tha, bina bataye mingle? {name}, story me filter zyada, life me confidence kam 💀",
+            "{name} mirror ko flying kiss de ke practice karta/karti hai — real me connection failed 😂",
+            "Sanitizer ready, confidence missing — {name} ka Kiss Day update pending 😜",
+          ],
+          savage: [
+            "{name} ka love life patch notes: 'confidence: 0.1 beta' 🤣",
+            "Mirror bol raha: bhai mujhe to pyaar milta hai, {name} ko kab? 💀",
+            "Kiss Day pe bhi 'Maybe later' – {name} pls update firmware 😂",
+          ]
+        },
+        "Valentine’s Day": {
+          mild: [
+            "{name} ki movie: thoda pyaar, thoda patience – happy ending ban sakti hai 😊",
+            "Expectations ko realistic rakho, feel automatic aayega 😌",
+            "Small efforts, big feels – {name} edition 💘",
+          ],
+          medium: [
+            "{name} ki love story: expectations 100, efforts 0 — phir bolta/bolti 'log samajhte nahi' 🤣",
+            "{name} ke calendar me 'someday' booked — reality TBA 😹",
+            "Plot twist pehle minute me: {name} ki priorities > pyaar — phir blame duniya pe 💘",
+          ],
+          savage: [
+            "{name} ki love story ka budget: dialogues full, action zero 💀",
+            "Schedule busy, excuses ready – {name} romantic on airplane mode 😂",
+            "Valentine pe bhi procrastination? {name}, cupid bhi bolta: bhai main chalta hoon 🤣",
+          ]
+        }
+      };
+
+      const byId=id=>document.getElementById(id);
+      const nameInput=byId('name-input');
+      const startBtn=byId('start-btn');
+      const startCard=byId('start-card');
+      const jokesCard=byId('jokes-card');
+      const daysWrap=byId('days');
+      const jokeText=byId('joke-text');
+      const emojiSpan=byId('emoji');
+      const jokeBtn=byId('joke-btn');
+      const greeting=byId('greeting');
+      const burstHost=byId('burst-host');
+
+      let started=false;let currentDay=null;let lastIndex={};
+      let intensity='medium';
+      let musicOn=false; let audioCtx=null; let musicTimer=null;
+
+      function randomInt(n){return Math.floor(Math.random()*n)}
+      function formatJoke(tpl){const nm=(nameInput.value||'Dost').trim();return tpl.replace(/\{name\}/g,nm)}
+      function pickJoke(day){const list=JOKES_BY_INTENSITY[day][intensity];if(!list||!list.length)return'';let i=randomInt(list.length);const prev=lastIndex[day+intensity];if(list.length>1 && i===prev){i=(i+1)%list.length}lastIndex[day+intensity]=i;return formatJoke(list[i])}
+
+      function spawnBurst(node){const rect=(node||jokeBtn).getBoundingClientRect();const baseLeft=rect.left+rect.width/2;const baseTop=rect.top+rect.height/2;const count=10+Math.floor(Math.random()*8);for(let i=0;i<count;i++){const span=document.createElement('span');span.className='sparkle-heart';span.textContent='❤';const size=10+Math.random()*18;const hues=["var(--heart-red)","var(--heart-pink)","var(--heart-purple)"];span.style.left=(baseLeft+(Math.random()-0.5)*160)+'px';span.style.top=(baseTop+8)+'px';span.style.fontSize=size+'px';span.style.color=hues[i%3];span.style.setProperty('--dur',(900+Math.random()*800)+'ms');burstHost.appendChild(span);setTimeout(()=>span.remove(),1700)} }
+
+      function setGreeting(){if(!started){greeting.textContent='Valentine Week LOL Station'}else{greeting.textContent='Hi, '+(nameInput.value||'Dost').trim()+'!'}}
+
+      function renderDays(){daysWrap.innerHTML='';DAYS.forEach(d=>{const b=document.createElement('button');b.type='button';b.className='day'+(currentDay===d?' active':'');b.textContent=d;b.addEventListener('click',()=>{currentDay=d;renderDays();jokeText.textContent='';spawnBurst(b)});daysWrap.appendChild(b)})}
+
+      function onStart(){if(!nameInput.value.trim())return;started=true;setGreeting();startCard.style.display='none';jokesCard.style.display='grid';const idx=(new Date().getDate())%DAYS.length;currentDay=DAYS[idx];renderDays();spawnBurst(startBtn)}
+
+      function onShowJoke(){if(!currentDay)return;emojiSpan.textContent=EMOJIS[randomInt(EMOJIS.length)];const line=pickJoke(currentDay);jokeText.textContent=line;spawnBurst(jokeBtn)}
+
+      nameInput.addEventListener('input',()=>{startBtn.disabled=!nameInput.value.trim()});
+      startBtn.addEventListener('click',onStart);
+      jokeBtn.addEventListener('click',onShowJoke);
+
+      const mildBtn=byId('lvl-mild');
+      const medBtn=byId('lvl-medium');
+      const savBtn=byId('lvl-savage');
+      function setLvl(lvl){intensity=lvl; [mildBtn,medBtn,savBtn].forEach(b=>b.classList.remove('active')); if(lvl==='mild') m
