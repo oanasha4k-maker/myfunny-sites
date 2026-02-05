@@ -3,62 +3,110 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Valentine Week Fun Selector</title>
+    <title>Select your day, get a filmy joke!</title>
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #ffebee;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
+            min-height: 100vh;
             margin: 0;
             text-align: center;
         }
         .container {
-            background: white;
-            padding: 2rem;
+            padding: 20px;
+            max-width: 90%;
+        }
+        h1 { font-size: 2rem; color: #fff; text-shadow: 2px 2px 10px #ff0055; }
+        .made-by {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 150px;
+        }
+        .input-box {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 20px;
             border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            max-width: 400px;
-        }
-        h1 { color: #e91e63; }
-        .btn {
-            background: #e91e63;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 10px;
-            cursor: pointer;
-            font-size: 1.1rem;
-            margin-top: 15px;
-        }
-        #result {
             margin-top: 20px;
+        }
+        input {
+            width: 80%;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background: #1a1a1a;
+            color: white;
+            margin-bottom: 15px;
+        }
+        .masti-btn {
+            background: linear-gradient(to right, #ff416c, #ff4b2b);
+            border: none;
+            padding: 15px 30px;
+            color: white;
+            border-radius: 15px;
             font-weight: bold;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
+        }
+        .day-btn {
+            background: #e91e63;
+            border: none;
+            padding: 12px;
+            color: white;
+            border-radius: 10px;
+            width: 100%;
+            margin-top: 20px;
+        }
+        #joke-display {
+            margin-top: 20px;
+            font-style: italic;
+            color: #00ffcc;
             font-size: 1.2rem;
-            color: #333;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>💖 Valentine Fun</h1>
-        <p>Click the button to see your Valentine surprise!</p>
-        <button class="btn" onclick="showSurprise()">Click Me!</button>
-        <div id="result"></div>
+        <h1>Select your day, get a filmy joke! 💥🤣</h1>
+        <p>Naam likho, day choose karo, aur har click pe naya funny dialogue! (School friendly roast)</p>
+        
+        <div class="made-by">
+            <p style="font-size: 0.8rem; margin: 0;">Made by</p>
+            <p style="font-weight: bold; margin: 5px 0; color: #ff85a1;">ANAS</p>
+            <p style="font-size: 0.7rem; color: #00ffcc;">@phising.attaker</p>
+        </div>
+
+        <div class="input-box">
+            <p style="font-size: 0.8rem; letter-spacing: 2px;">PEHLE APNA NAAM LIKHO</p>
+            <input type="text" id="userName" placeholder="Type your name...">
+            <button class="masti-btn" onclick="showJoke()">MASTI BUTTON</button>
+
+            <p style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 2px;">SELECT YOUR DAY</p>
+            <button class="day-btn">Rose Day</button>
+            <div id="joke-display"></div>
+        </div>
     </div>
 
     <script>
-        function showSurprise() {
-            const jokes = [
-                "You are the 'Index.html' to my Website! 😍",
-                "Are you a Wi-Fi signal? Because I'm feeling a connection! 😂",
-                "My love for you is like a loop... it never ends! 🔄",
-                "Error 404: Heart stolen by YOU! 🚫💖"
-            ];
+        const jokes = [
+            "Arey [NAME], tumhare liye toh 'Mogambo khush hua' bhi chota pad jayega! 😂",
+            "[NAME], tumhari smile dekh kar toh Gabbar bhi bolega - Kitne aadmi the? 🤣",
+            "School ki padhai aur tumhari baatein, dono sar ke upar se jati hain! 🏃‍♂️",
+            "[NAME], tumhare liye ek hi dialogue hai: 'Don ko pakadna mushkil hi nahi... namumkin hai!'",
+            "Rose day pe phool nahi, school ki diary check karwao pehle! 🌹❌"
+        ];
+
+        function showJoke() {
+            const name = document.getElementById('userName').value || "Dost";
             const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-            document.getElementById('result').innerHTML = randomJoke;
+            document.getElementById('joke-display').innerText = randomJoke.replace("[NAME]", name);
         }
     </script>
 </body>
