@@ -1,12 +1,65 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Valentine Week Fun Selector</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffebee;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+        }
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            max-width: 400px;
+        }
+        h1 { color: #e91e63; }
+        .btn {
+            background: #e91e63;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1.1rem;
+            margin-top: 15px;
+        }
+        #result {
+            margin-top: 20px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 Valentine Fun</h1>
+        <p>Click the button to see your Valentine surprise!</p>
+        <button class="btn" onclick="showSurprise()">Click Me!</button>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        function showSurprise() {
+            const jokes = [
+                "You are the 'Index.html' to my Website! 😍",
+                "Are you a Wi-Fi signal? Because I'm feeling a connection! 😂",
+                "My love for you is like a loop... it never ends! 🔄",
+                "Error 404: Heart stolen by YOU! 🚫💖"
+            ];
+            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
+            document.getElementById('result').innerHTML = randomJoke;
+        }
+    </script>
+</body>
 </html>
