@@ -57,7 +57,7 @@
 
     /* Day buttons */
     .days{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-    .day{padding:8px 12px;border-radius:9999px;border:1px solid #fbcfe8;background:#fff;color:#be185d;font-weight:600;font-size:14px;transition:transform .15s ease, border-color .15s ease}
+    .day{padding:8px 12px;border-radius:9999px;border:1px solid #fbcfe8;background:#fff;color:#be185d;font-weight:600;font-size:14px;transition:transform .15s ease, border-color .15s ease;animation:dayPulse 2000ms ease-in-out infinite}
     .day:hover{transform:scale(1.02);border-color:#f472b6}
     .day.active{background:#db2777;color:#fff;border-color:#db2777;box-shadow:0 8px 26px rgba(219,39,119,.25)}
 
@@ -74,6 +74,7 @@
     @keyframes popIn{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05);opacity:1}100%{transform:scale(1)}}
     @keyframes floatUp{0%{transform:translateY(0) scale(.8) rotate(0);opacity:1}100%{transform:translateY(-120vh) scale(1.2) rotate(20deg);opacity:0}}
     @keyframes pulseGlow{0%,100%{text-shadow:0 0 0 rgba(255,58,123,0)}50%{text-shadow:0 0 16px rgba(255,58,123,.45)}}
+    @keyframes dayPulse{0%,100%{transform:translateY(0) scale(1);box-shadow:0 0 0 rgba(219,39,119,0)}50%{transform:translateY(-1px) scale(1.02);box-shadow:0 10px 26px rgba(219,39,119,.18)}}
 
     /* Heart particles */
     #burst-host{position:fixed;inset:0;pointer-events:none}
@@ -86,6 +87,7 @@
     <h1 id="greeting">Valentine Week LOL Station</h1>
     <p class="sub">Naam daalo, day choose karo, aur bezzati wali roast lo – har click pe hearts udte hain! 💘</p>
     <div class="badges">
+      <div class="insta-badge" style="font-weight:900">Made by ANAS SAKA 🇵🇸</div>
       <a class="insta-badge" href="https://instagram.com/phising.attaker" target="_blank" rel="noreferrer" aria-label="Open Instagram: @phising.attaker">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
           <defs>
@@ -113,12 +115,6 @@
     <section id="jokes-card" class="grid" style="display:none">
       <section class="card">
         <div id="days" class="days"></div>
-        <div class="row" style="margin:6px 0 10px 0;gap:8px;align-items:center">
-          <span class="hint">Roast Intensity:</span>
-          <button id="lvl-mild" class="day">Mild</button>
-          <button id="lvl-medium" class="day active">Medium</button>
-          <button id="lvl-savage" class="day">Savage</button>
-        </div>
         <div class="jokeBox">
           <p id="joke" class="joke"><span id="emoji">✨</span> <span id="joke-text" style="margin-left:6px;color:#3f3f46">Koi day select karo, phir niche button dabao – naam ke saath bezzati wali roast aayegi! 😄</span></p>
         </div>
@@ -131,8 +127,7 @@
         </div>
       </section>
       <aside class="card credits">
-        <h3>Credits</h3>
-        <p class="by">Made by ANAS SAKA 🇵🇸</p>
+        <h3>Made by ANAS SAKA 🇵🇸</h3>
         <a class="insta-badge" href="https://instagram.com/phising.attaker" target="_blank" rel="noreferrer">@phising.attaker</a>
         <div class="hint" style="margin-top:10px">Insta badge pe click karo — direct profile open ho jayega! ✨</div>
       </aside>
@@ -148,138 +143,138 @@
       const JOKES_BY_INTENSITY={
         "Rose Day": {
           mild: [
-            "{name}, tere liye rose nahi, smile hi kaafi – par attitude thoda kam karo 😆",
-            "Rose diya {name} ko, phool bola: thoda pyaar se rakhna bhai 😂",
-            "Gulab ka khushboo achhi, par {name} ka drama aur bhi tez 😜",
+            "{name}, गुलाब दिया तो उसने बोला: 'तेरा गुलाब तो पहले से ही मुरझाया है' 😅",
+            "{name} गुलाब लेकर गया/गई, सामने वाला बोला: 'भाई पहले खुद की हालत देख' 😂",
+            "गुलाब नहीं, {name} को तो मोटिवेशन चाहिए 😄",
           ],
           medium: [
-            "{name}, tere liye rose nahi, cactus hi sahi — attitude aur spikes dono match karte hain 💀",
-            "Aaj Rose Day par {name} ko phool diya, phool bola: 'bhai mujhe bhi respect chahiye' 😂",
-            "Gulab mehenga sahi, par {name} ka expectation usse bhi mehenga — delivery zero 😹",
+            "{name}, गुलाब देने गया/गई और जवाब आया: 'भाई ये तो सूखा हुआ है' 🤣",
+            "{name} का गुलाब देखकर सामने वाला बोला: 'पानी बच गया, शुक्रिया' 💀",
+            "{name}, तेरे गुलाब से ज्यादा fresh तो मेरी नींद है 😹",
           ],
           savage: [
-            "{name} ke liye rose nahi, warning label bhejta hoon: 'Handle with overacting' 💀",
-            "Phool ne {name} ko dekha aur bola: mere petals bhi itne sensitive nahi jitna ego 😭",
-            "Rose bhi soch raha: {name} ke saath rehna kaam hai ya punishment? 🤣",
+            "{name} गुलाब देने गया/गई, उसने बोला: 'ये गुलाब नहीं, तेरी उम्मीद मुरझाई है' 💀",
+            "{name}, तेरे गुलाब से प्यार नहीं आया, हंसी जरूर आ गई 😂",
+            "गुलाब दिया {name} ने, सामने वाला बोला: 'यार ये तो sympathy gift लग रहा है' 🤣",
           ]
         },
         "Propose Day": {
           mild: [
-            "Propose karu {name} ko? Dimag: pehle friendship level upgrade to karo 🤭",
-            "{name} ka reply: 'dekhenge' – accha, calendar me kab? 😆",
-            "Confidence low, hopes high – classic {name} move 😂",
+            "{name} ने प्रपोज किया, जवाब आया: 'अभी घरवाले नहीं मानेंगे' 😄",
+            "{name} का प्रपोज देख कर बोला: 'सोचूंगा/सोचूंगी' — मतलब नहीं 😂",
+            "{name}, तेरा प्रपोज सुनकर हिम्मत तो आई, पर जवाब नहीं 😅",
           ],
           medium: [
-            "Propose karu {name} ko? Dimag: 'bhai izzat bachaa, seen pe chhod de' 🤣",
-            "{name} ka 'I’ll think about it' utna hi real hai jitna free WiFi ka password 'password' 💀",
-            "Proposal bheja, {name} ne archive me daal diya — yaadon ko bhi ignore kardiya 😂",
+            "{name} ने प्रपोज किया, उसने देखा और बोला: 'भाई मैं तो दोस्त समझता/समझती थी' 🤣",
+            "{name} का प्रपोज = seen, reply नहीं 💀",
+            "{name} को प्रपोज किया, जवाब मिला: 'हंसने दिया करो' 😂",
           ],
           savage: [
-            "Proposal bhejne se pehle {name} ko network to milwa do – reply aata hi nahi 😹",
-            "{name} ka dil bhi trial version – terms padho, access limited 🤣",
-            "Kismat bhi kehti: {name}? beta sapna dekh, result mat expect kar 💀",
+            "{name} का प्रपोज सुनकर सामने वाला बोला: 'अभी तक तूने ये सपना देखा?' 💀",
+            "{name} को प्रपोज किया, reply आया: 'भाई तू तो भाई है' 😂",
+            "{name} का प्रपोज देखकर Cupid भी बोला: 'मैं छुट्टी पर हूँ' 🤣",
           ]
         },
         "Chocolate Day": {
           mild: [
-            "{name} ke liye dairy milk, par calories ko ignore mode pe rakhna 🤭",
-            "Chocolate share karni thi, {name} ne motivation share kardi 😂",
-            "{name} + chocolate = sweet combo, bas lecture free me milta hai 😆",
+            "{name} ने चॉकलेट दी, उसने कहा: 'धन्यवाद, बस इतना ही?' 😄",
+            "{name} की चॉकलेट मीठी थी, पर जवाब फीका 😂",
+            "चॉकलेट दी {name} ने, सामने वाला बोला: 'डाइट पे हूँ… फिर भी दे दे' 😅",
           ],
           medium: [
-            "Chocolate {name} ko di, reply: 'diet pe hoon'… raat ko saari khaa ke bolta/bolti 'calories delete kar dena' 😆",
-            "Wrapper pe likh diya: 'For {name}: hopes not included' 😹",
-            "{name} ke saath sharing = tum chocolate do, woh lecture de 🤭",
+            "{name} ने चॉकलेट दी, उसने कहा: 'ठीक है, अब बाकी भी दे' 🤣",
+            "चॉकलेट {name} ने दी, जवाब आया: 'कैलोरी का बिल तुम दोगे?' 💀",
+            "{name} का 'थोड़ा' मतलब पूरा डिब्बा 😹",
           ],
           savage: [
-            "Chocolate di, {name} ne kaha: 'trust pe kaam karo' – aur khud saari khaa li 😂",
-            "{name} ka portion size = 'thoda' matlab pura box 💀",
-            "Sweet tooth nahi, sweet excuse zyada – classic {name} move 😜",
+            "{name} की चॉकलेट देखकर बोला: 'इतना ही? तेरी औकात बस यही?' 💀",
+            "{name} ने चॉकलेट दी, सामने वाला बोला: 'इसके साथ भरोसा भी दे' 😂",
+            "{name} की मिठास कम, नखरे ज्यादा — चॉकलेट भी शर्माई 😜",
           ]
         },
         "Teddy Day": {
           mild: [
-            "Teddy cute, {name} cuter – bas confusion thoda kam rakho 😄",
-            "{name} ka teddy se pyaar: 10/10, logon se patience: 2/10 😂",
-            "Teddy ko hug, drama ko mute – deal? 🤭",
+            "{name} ने टेडी दिया, सामने वाला बोला: 'टेडी प्यारा है, तू नहीं' 😅",
+            "टेडी दिया {name} ने, जवाब मिला: 'ये तो ठीक है, तू कब सुधरेगा?' 😂",
+            "{name} का टेडी देख कर बोला: 'चल ठीक है, रख लेते हैं' 😄",
           ],
           medium: [
-            "Teddy ne {name} ko dekh ke bola: 'main cute hoon, tu confuse' 💀",
-            "{name} ka 'cute act' dekh ke teddy ne resign de diya: 'emotionally overworked' 😂",
-            "Gift diya teddy, {name}: 'return policy?' — trust issues pro max 😝",
+            "{name} ने टेडी दिया, सामने वाला बोला: 'टेडी तो प्यारा है, तू नहीं' 🤣",
+            "{name} का टेडी देख कर बोला: 'टेडी ठीक है, तू थोड़ा कम बोल' 💀",
+            "{name} के टेडी से ज्यादा सुकून तो नींद में मिलता है 😹",
           ],
           savage: [
-            "Teddy bhi bol raha: {name}, please mujhe shelf pe hi chhod do 😭",
-            "Cuteness demand high, supply low – {name} ka market crash 💀",
-            "Teddy soft, {name} ke replies harder than maths 😂",
+            "{name} का टेडी देख कर बोला: 'ये रख लो, तुम खुद बच्चा ही रहो' 💀",
+            "{name} ने टेडी दिया, जवाब आया: 'भाई तू खुद टेडी जैसा सोता है' 😂",
+            "{name}, टेडी से प्यार आ गया, तुझसे नहीं 🤣",
           ]
         },
         "Promise Day": {
           mild: [
-            "{name} ka promise tracker: in-progress, optimism: full 😇",
-            "Kal se sudharoonga/sudharoongi – reminder set kar diya? 🤭",
-            "Small steps bhi chalega, bas start to karo {name} 😌",
+            "{name} का वादा: कल से सुधरूंगा — फिर कल आया ही नहीं 😄",
+            "{name} ने वादा किया, भरोसा थोड़ा सा बढ़ा 😂",
+            "{name} के वादे मीठे हैं, बस पूरे कम होते हैं 😅",
           ],
           medium: [
-            "{name} ka promise: 'kal se sudhar jaunga/jaungi' — woh kal kabhi aata hi nahi 🤣",
-            "Accountability check: {name} ke promises cloud me save, delivery kabhi nahi 😹",
-            "{name} ka 'always there' utna hi stable hai jitna April ka weather 💘",
+            "{name} का वादा मतलब कल फिर नई कहानी 🤣",
+            "{name} के वादे सुनने में अच्छे, निभाने में गायब 💀",
+            "{name} ने बोला: पक्का! — और फिर गायब 😂",
           ],
           savage: [
-            "Promises ka OTP {name} ke phone pe aata hi nahi 😂",
-            "{name} ke promises bhi 'skip ads in 5 sec' jaise – kabhi skip ho jate hain 💀",
-            "Words premium, actions trial – {name} edition 🤣",
+            "{name} का वादा उतना ही भरोसेमंद जितना सस्ते data pack का signal 💀",
+            "{name} के वादे TV के ads जैसे — आते हैं, जाते हैं 😂",
+            "वादा किया {name} ने, सच में? मजाक था 🤣",
           ]
         },
         "Hug Day": {
           mild: [
-            "{name} ka hug = low battery mode, par pyaar original 😄",
-            "Free hugs – {name} ka queue manage karo bhai 🤭",
-            "Hug de, stress gayab – bas thoda feel add karo {name} 😊",
+            "{name} का hug ठीक है, पर तेरे attitude का heater चाहिए 😄",
+            "{name} को हग दिया, उसने कहा: 'थोड़ा warm हो जाओ' 😂",
+            "{name} का हग मिला, मूड थोड़ा ठीक हुआ 🤭",
           ],
           medium: [
-            "{name} ka hug itna dry ki lagta hai balance low — emotions ka recharge kara le 😂",
-            "Free hugs announce kiye, {name} ka server down — token milte rahe, hug nahi 😆",
-            "Virtual hug bheja, {name} ne 'K' reply karke bandwidth ko bhi hurt kar diya 🤭",
+            "{name} का हग इतना ठंडा कि AC भी शर्मा जाए 😂",
+            "हग Day पर {name} का सिस्टम hang हो गया 😆",
+            "{name} ने हग दिया, पर vibe offline थी 💀",
           ],
           savage: [
-            "{name} ka hug manual me likha: 'use at own risk – feelings missing' 💀",
-            "Token leke aa, {name} ka hug counter slow hai 😂",
-            "Hug milega jab network 'Feel-4G' pe aayega – {name} pls upgrade 🤣",
+            "{name} का हग ऐसा कि दिल भी सोचे: 'ये क्या था?' 💀",
+            "हग मांगा {name} से, जवाब मिला: 'भाई पहले mood set कर' 😂",
+            "{name} का हग = कम गर्मी, ज्यादा formalities 🤣",
           ]
         },
         "Kiss Day": {
           mild: [
-            "Confidence build karo {name}, filter se zyada asli smile achhi lagti hai 😊",
-            "Practice mirror ke saath theek hai, real me courage chahiye 😄",
-            "Sanitizer ready, bas confidence on karo {name} 🤭",
+            "{name}, तू तो single है, mingle कब हुआ? 😄",
+            "{name} ने kiss की बात की, सामने वाला बोला: 'पहले दोस्ती' 😂",
+            "Kiss Day पर {name} का confidence छुट्टी पर था 😅",
           ],
           medium: [
-            "Bhai tu to single tha, bina bataye mingle? {name}, story me filter zyada, life me confidence kam 💀",
-            "{name} mirror ko flying kiss de ke practice karta/karti hai — real me connection failed 😂",
-            "Sanitizer ready, confidence missing — {name} ka Kiss Day update pending 😜",
+            "{name} तो single था, बिना बताए mingle कैसे हो गया? 💀",
+            "{name} ने आइने को kiss दी, असली में network नहीं 😂",
+            "Confidence गायब, {name} का Kiss Day pending 😜",
           ],
           savage: [
-            "{name} ka love life patch notes: 'confidence: 0.1 beta' 🤣",
-            "Mirror bol raha: bhai mujhe to pyaar milta hai, {name} ko kab? 💀",
-            "Kiss Day pe bhi 'Maybe later' – {name} pls update firmware 😂",
+            "{name} की love story अब भी loading... 😭",
+            "आइना बोला: मुझे तो प्यार मिला, {name} को कब? 💀",
+            "Kiss Day पर भी {name} को 'बाद में' मिला 🤣",
           ]
         },
         "Valentine’s Day": {
           mild: [
-            "{name} ki movie: thoda pyaar, thoda patience – happy ending ban sakti hai 😊",
-            "Expectations ko realistic rakho, feel automatic aayega 😌",
-            "Small efforts, big feels – {name} edition 💘",
+            "{name} की कहानी: थोड़ा प्यार, थोड़ा सब्र — सब ठीक हो सकता है 😊",
+            "{name} का प्लान अच्छा है, बस मेहनत कम 😄",
+            "छोटी कोशिशें बड़ी बात बनती हैं, {name} सीख लो 😌",
           ],
           medium: [
-            "{name} ki love story: expectations 100, efforts 0 — phir bolta/bolti 'log samajhte nahi' 🤣",
-            "{name} ke calendar me 'someday' booked — reality TBA 😹",
-            "Plot twist pehle minute me: {name} ki priorities > pyaar — phir blame duniya pe 💘",
+            "{name} की love story: उम्मीदें 100, कोशिशें 0 🤣",
+            "{name} के कैलेंडर में 'कभी न कभी' लिखा है 😹",
+            "प्यार कम, बहाने ज्यादा — {name} स्पेशल 💘",
           ],
           savage: [
-            "{name} ki love story ka budget: dialogues full, action zero 💀",
-            "Schedule busy, excuses ready – {name} romantic on airplane mode 😂",
-            "Valentine pe bhi procrastination? {name}, cupid bhi bolta: bhai main chalta hoon 🤣",
+            "{name} की love story: बातें बड़ी, काम छोटे 💀",
+            "{name} का रोमांस अक्सर छुट्टी पर रहता है 😂",
+            "Cupid भी बोला: {name}, अब तू खुद संभाल 🤣",
           ]
         }
       };
@@ -317,17 +312,8 @@
       startBtn.addEventListener('click',onStart);
       jokeBtn.addEventListener('click',onShowJoke);
 
-      const mildBtn=byId('lvl-mild');
-      const medBtn=byId('lvl-medium');
-      const savBtn=byId('lvl-savage');
-      function setLvl(lvl){intensity=lvl; [mildBtn,medBtn,savBtn].forEach(b=>b.classList.remove('active')); if(lvl==='mild') mildBtn.classList.add('active'); if(lvl==='medium') medBtn.classList.add('active'); if(lvl==='savage') savBtn.classList.add('active'); spawnBurst(medBtn);}
-      mildBtn.addEventListener('click',()=>setLvl('mild'));
-      medBtn.addEventListener('click',()=>setLvl('medium'));
-      savBtn.addEventListener('click',()=>setLvl('savage'));
-
       setTimeout(()=>spawnBurst(startBtn),400);
     })();
   </script>
 </body>
-  </html>
-  
+</html>
