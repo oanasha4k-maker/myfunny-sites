@@ -1,113 +1,249 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select your day, get a filmy joke!</title>
-    <style>
-        body {
-            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
-            color: white;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            margin: 0;
-            text-align: center;
-        }
-        .container {
-            padding: 20px;
-            max-width: 90%;
-        }
-        h1 { font-size: 2rem; color: #fff; text-shadow: 2px 2px 10px #ff0055; }
-        .made-by {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 15px;
-            padding: 10px;
-            margin: 20px auto;
-            width: 150px;
-        }
-        .input-box {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 20px;
-            border-radius: 20px;
-            margin-top: 20px;
-        }
-        input {
-            width: 80%;
-            padding: 10px;
-            border-radius: 10px;
-            border: none;
-            background: #1a1a1a;
-            color: white;
-            margin-bottom: 15px;
-        }
-        .masti-btn {
-            background: linear-gradient(to right, #ff416c, #ff4b2b);
-            border: none;
-            padding: 15px 30px;
-            color: white;
-            border-radius: 15px;
-            font-weight: bold;
-            cursor: pointer;
-            width: 100%;
-            box-shadow: 0 5px 15px rgba(255, 65, 108, 0.4);
-        }
-        .day-btn {
-            background: #e91e63;
-            border: none;
-            padding: 12px;
-            color: white;
-            border-radius: 10px;
-            width: 100%;
-            margin-top: 20px;
-        }
-        #joke-display {
-            margin-top: 20px;
-            font-style: italic;
-            color: #00ffcc;
-            font-size: 1.2rem;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Select your day, get a filmy joke! 💥🤣</h1>
-        <p>Naam likho, day choose karo, aur har click pe naya funny dialogue! (School friendly roast)</p>
-        
-        <div class="made-by">
-            <p style="font-size: 0.8rem; margin: 0;">Made by</p>
-            <p style="font-weight: bold; margin: 5px 0; color: #ff85a1;">ANAS</p>
-            <p style="font-size: 0.7rem; color: #00ffcc;">@phising.attaker</p>
-        </div>
+import { useMemo, useState } from "react";
 
-        <div class="input-box">
-            <p style="font-size: 0.8rem; letter-spacing: 2px;">PEHLE APNA NAAM LIKHO</p>
-            <input type="text" id="userName" placeholder="Type your name...">
-            <button class="masti-btn" onclick="showJoke()">MASTI BUTTON</button>
+const dayData = [
+  {
+    id: "rose",
+    label: "Rose Day",
+    color: "from-rose-400 to-rose-600",
+    jokes: [
+      "{name} ne rose ka scene aisa banaya, phool nahi mila par style full on! 🌹😎",
+      "{name} ka rose: ‘Phool to nahi, par smile free mein le lo!’ 🌹😆",
+      "{name} ne gulab nahi diya, par pose deke class ko confuse kar diya! 🌹📸😂",
+    ],
+  },
+  {
+    id: "propose",
+    label: "Propose Day",
+    color: "from-pink-400 to-fuchsia-600",
+    jokes: [
+      "{name} ne propose kiya: ‘Tiffin share karoge?’—aur wo haan bol bhi gaya! 💌😜",
+      "{name} ka propose level: ‘Marks mein partner banogi?’ 🤝😂",
+      "{name} ne propose kiya, reply aaya: ‘Exam ke baad sochenge!’ 📚😅",
+      "{name} ka proposal: ‘Pencil do’, aur crush list mein entry fix! ✏️😆",
+    ],
+  },
+  {
+    id: "chocolate",
+    label: "Chocolate Day",
+    color: "from-amber-400 to-orange-600",
+    jokes: [
+      "{name} ne chocolate khud hi kha li, wrapper deke bola: ‘Surprise!’ 🍫🤣",
+      "{name} ka plan: ‘Do chocolate, ek bhi mujhe!’ 😋🍫",
+      "{name} ne chocolate di, saamne se reply: ‘Diet chal rahi hai!’ 😭🍫",
+    ],
+  },
+  {
+    id: "teddy",
+    label: "Teddy Day",
+    color: "from-amber-300 to-yellow-500",
+    jokes: [
+      "{name} ne teddy diya, phir khud bol pada: ‘Mujhe bhi hug chahiye!’ 🧸😂",
+      "{name} ka teddy itna bada tha, bench hi gayab! 🧸🤣",
+      "{name} ne teddy ko homework dikha diya, teddy faint! 🧸📚😵",
+    ],
+  },
+  {
+    id: "promise",
+    label: "Promise Day",
+    color: "from-sky-400 to-indigo-600",
+    jokes: [
+      "{name} ka promise: ‘Kal se time pe aaunga’… aur kal phir late! ⏰😆",
+      "{name} ne kaha: ‘No mobile in class’… 5 min baad selfie! 🤳😂",
+      "{name} ne promise kiya: ‘Assignment khud karunga’… aur ChatGPT ko bula liya! 🤖😜",
+    ],
+  },
+  {
+    id: "hug",
+    label: "Hug Day",
+    color: "from-emerald-400 to-green-600",
+    jokes: [
+      "{name} ne hug diya, par backpack itna bada tha ki hug hi nahi hua! 🎒😂",
+      "{name} ka hug: 2 second ka, par yaad 2 saal ka! 🤗✨",
+      "{name} ne hug kiya aur bola: ‘Attendance bhi lagegi?’ 🤗📒😆",
+      "{name} ka hug dekh ke bola gaya: ‘Bhai sweater pehna hai, feel nahi aa raha!’ 🧥😂",
+    ],
+  },
+  {
+    id: "kiss",
+    label: "Kiss Day",
+    color: "from-red-400 to-rose-600",
+    jokes: [
+      "{name} ne Kiss Day pe bola: ‘Bhai tu single hai, bina bataye mingle ho gaya!’ 😏💥",
+      "{name} ka scene: ‘Flying kiss’—aur samne wali ne catch hi nahi kiya! 💋😂",
+      "{name} ne kiss ka plan banaya, par bell baj gayi… recess over! 🔔😅",
+      "{name} ka attempt dekh ke aunty boli: ‘Pehle homework!’ 📒🤣",
+    ],
+  },
+  {
+    id: "valentine",
+    label: "Valentine Day",
+    color: "from-violet-500 to-purple-700",
+    jokes: [
+      "{name} ne gift diya, receiver bola: ‘Receipt hai?’ 🎁😆",
+      "{name} ka status: ‘In a relation… with marks!’ 📝💘😂",
+      "{name} ne propose kiya, reply aaya: ‘Group project mein add kar lo!’ 🤝💘😜",
+      "{name} ka plan dekh ke dost bole: ‘Bhai, tu toh trailer hai, picture baad mein!’ 🎬🤣",
+    ],
+  },
+];
 
-            <p style="margin-top: 20px; font-size: 0.8rem; letter-spacing: 2px;">SELECT YOUR DAY</p>
-            <button class="day-btn">Rose Day</button>
-            <div id="joke-display"></div>
-        </div>
+const baseNameRoasts = [
+  "{name} ka swag dekh ke lagta hai mirror bhi sharma gaya! 😎🪞",
+  "{name} ki entry ho jaye to class ka volume 200% ho jata! 🔊😂",
+  "{name} ka confidence aisa, answer wrong bhi ho to taaliyan milti! 👏😆",
+  "{name} ka style: zero tension, full attention! 😜✨",
+  "{name} ka naam hi kaafi hai, roll number to bas show-off hai! 📛🤣",
+];
+
+export function App() {
+  const [name, setName] = useState("");
+  const [selectedDay, setSelectedDay] = useState(dayData[0]);
+  const [joke, setJoke] = useState("");
+  const [pulseKey, setPulseKey] = useState(0);
+
+  const greetingName = useMemo(() => (name.trim() ? name.trim() : "Dost"), [name]);
+
+  const handleDayClick = (dayId: string) => {
+    const day = dayData.find((item) => item.id === dayId) ?? dayData[0];
+    const jokes = day.jokes;
+    const nextJoke = jokes[Math.floor(Math.random() * jokes.length)].replace(
+      "{name}",
+      greetingName
+    );
+    setSelectedDay(day);
+    setJoke(nextJoke);
+    setPulseKey((prev) => prev + 1);
+  };
+
+  const randomNameRoast = useMemo(() => {
+    const pick = baseNameRoasts[Math.floor(Math.random() * baseNameRoasts.length)];
+    return pick.replace("{name}", greetingName);
+  }, [greetingName, joke]);
+
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white">
+      <div className="mx-auto flex min-h-screen max-w-6xl flex-col gap-10 px-6 py-12">
+        <header className="flex flex-wrap items-center justify-between gap-6">
+          <div className="space-y-3">
+            <p className="text-sm uppercase tracking-[0.3em] text-rose-200/80">
+              Valentine Week Fun Selector
+            </p>
+            <h1 className="text-4xl font-extrabold leading-tight sm:text-5xl">
+              Select your day, get a filmy joke! 💥🤣
+            </h1>
+            <p className="max-w-xl text-base text-slate-200/80">
+              Naam likho, day choose karo, aur har click pe naya funny dialogue! (School friendly
+              roast-style jokes 😄)
+            </p>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/5 px-5 py-4 text-center shadow-lg shadow-black/30">
+            <p className="text-sm text-slate-200/70">Made by</p>
+            <p className="text-lg font-semibold text-rose-200">ANAS</p>
+            <a
+              href="https://instagram.com/phising.attaker"
+              target="_blank"
+              rel="noreferrer"
+              className="mt-3 inline-flex items-center justify-center rounded-full border border-emerald-300/40 bg-emerald-300/10 px-4 py-1 text-sm font-semibold text-emerald-200 shadow-[0_0_15px_rgba(16,185,129,0.5)] transition hover:scale-105 hover:bg-emerald-300/20"
+            >
+              @phising.attaker
+            </a>
+          </div>
+        </header>
+
+        <section className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-6 rounded-3xl border border-white/10 bg-white/5 p-6 shadow-2xl shadow-black/30">
+            <div className="space-y-3">
+              <label className="text-sm uppercase tracking-[0.2em] text-slate-200/70">
+                Pehle apna naam likho
+              </label>
+              <div className="flex flex-col gap-3 sm:flex-row">
+                <input
+                  value={name}
+                  onChange={(event) => setName(event.target.value)}
+                  placeholder="Type your name..."
+                  className="h-12 flex-1 rounded-2xl border border-white/10 bg-slate-950/70 px-4 text-base text-white outline-none transition focus:border-rose-300 focus:ring-2 focus:ring-rose-400/40"
+                />
+                <button
+                  onClick={() => handleDayClick(selectedDay.id)}
+                  className="group relative h-12 overflow-hidden rounded-2xl bg-gradient-to-r from-rose-400 via-pink-500 to-fuchsia-500 px-6 text-sm font-semibold uppercase tracking-[0.2em] shadow-lg shadow-rose-500/30 transition hover:-translate-y-0.5 hover:shadow-xl"
+                >
+                  <span className="relative z-10 flex items-center gap-2">
+                    <span className="inline-block h-2 w-2 animate-ping rounded-full bg-white/70" />
+                    Masti Button
+                  </span>
+                  <span className="absolute inset-0 -translate-x-full bg-white/30 transition duration-500 group-hover:translate-x-full" />
+                </button>
+              </div>
+            </div>
+
+            <div className="space-y-4">
+              <p className="text-sm uppercase tracking-[0.2em] text-slate-200/70">
+                Select your day
+              </p>
+              <div className="grid gap-3 sm:grid-cols-2">
+                {dayData.map((day) => (
+                  <button
+                    key={day.id}
+                    onClick={() => handleDayClick(day.id)}
+                    className={`rounded-2xl border border-white/10 bg-gradient-to-r ${day.color} px-4 py-3 text-left text-sm font-semibold shadow-lg transition hover:-translate-y-1 hover:shadow-xl active:scale-95`}
+                  >
+                    {day.label}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="rounded-2xl border border-white/10 bg-slate-950/60 p-5">
+              <p className="text-sm uppercase tracking-[0.2em] text-rose-200/70">
+                Today’s Highlight
+              </p>
+              <h2 className="mt-2 text-2xl font-bold text-white">
+                {selectedDay.label}
+              </h2>
+              <p className="mt-3 text-base text-slate-200/80">
+                {joke ||
+                  `Hello ${greetingName}! Click any day and get a fresh joke with emojis 😄🎉`}
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-6">
+            <div
+              key={pulseKey}
+              className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 p-6 shadow-2xl shadow-black/30"
+            >
+              <p className="text-sm uppercase tracking-[0.2em] text-slate-200/60">
+                Naam Roast Corner
+              </p>
+              <p className="mt-4 text-2xl font-bold text-amber-200">
+                {randomNameRoast}
+              </p>
+              <p className="mt-3 text-sm text-slate-300/70">
+                Har click pe vibe change, roast friendly mode on! 😎
+              </p>
+            </div>
+
+            <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-slate-900 to-slate-950 p-6 text-center">
+              <p className="text-sm uppercase tracking-[0.2em] text-slate-200/60">
+                Insta Vibe
+              </p>
+              <a
+                href="https://instagram.com/phising.attaker"
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-emerald-300/40 bg-gradient-to-r from-emerald-400/20 via-teal-300/20 to-cyan-300/20 px-6 py-2 text-xl font-extrabold text-emerald-100 shadow-[0_0_25px_rgba(16,185,129,0.7)] transition hover:scale-105 hover:shadow-[0_0_35px_rgba(16,185,129,0.9)]"
+              >
+                <span className="animate-pulse">@phising.attaker</span>
+                <span className="text-2xl">✨</span>
+              </a>
+              <p className="mt-3 text-sm text-slate-300/70">
+                Share this page with friends and make them laugh! 😆✨
+              </p>
+            </div>
+          </div>
+        </section>
+      </div>
     </div>
-
-    <script>
-        const jokes = [
-            "Arey [NAME], tumhare liye toh 'Mogambo khush hua' bhi chota pad jayega! 😂",
-            "[NAME], tumhari smile dekh kar toh Gabbar bhi bolega - Kitne aadmi the? 🤣",
-            "School ki padhai aur tumhari baatein, dono sar ke upar se jati hain! 🏃‍♂️",
-            "[NAME], tumhare liye ek hi dialogue hai: 'Don ko pakadna mushkil hi nahi... namumkin hai!'",
-            "Rose day pe phool nahi, school ki diary check karwao pehle! 🌹❌"
-        ];
-
-        function showJoke() {
-            const name = document.getElementById('userName').value || "Dost";
-            const randomJoke = jokes[Math.floor(Math.random() * jokes.length)];
-            document.getElementById('joke-display').innerText = randomJoke.replace("[NAME]", name);
-        }
-    </script>
-</body>
-</html>
+  );
+}
+        
