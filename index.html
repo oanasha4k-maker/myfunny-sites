@@ -1,319 +1,1193 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>ANAS Fun Days • Valentine Week Roast Station (Single File)</title>
-  <link rel="canonical" href="https://anasfundays786.com" />
-  <meta name="theme-color" content="#ff3b7b" />
-  <meta property="og:title" content="ANAS Fun Days • Valentine Week Roast Station" />
-  <meta property="og:url" content="https://anasfundays786.com" />
-  <style>
-    :root{
-      --heart-red:#ff3b7b;--heart-pink:#ff7ab6;--heart-purple:#9b5cff;--ink:#0f0f14
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0; font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
-      color: #1f2937;
-      background:
-        radial-gradient(1200px 600px at -10% -10%, rgba(255, 238, 246, .9), transparent 60%),
-        radial-gradient(900px 500px at 110% -20%, rgba(237, 240, 255, .9), transparent 60%),
-        radial-gradient(800px 400px at 50% 120%, rgba(255, 245, 230, .9), transparent 60%);
-      overflow-x:hidden;
-    }
-    ::selection{background:#ffe0ec;color:#9b1145}
-    .container{max-width:1100px;margin:0 auto;padding:24px}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eid Mubarak 🌙 - Qurbani Portal</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Cinzel+Decorative:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    
+    <!-- React and ReactDOM CDNs -->
+    <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+    
+    <!-- Babel CDN for on-the-fly JSX compilation -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    /* Header */
-    header{text-align:center;padding-top:28px}
-    h1{margin:0;font-size:28px;line-height:1.15;color:#be185d;font-weight:900;letter-spacing:.2px;animation:popIn 420ms cubic-bezier(.2,.7,.2,1.1)}
-    .sub{margin-top:6px;color:#6b7280;font-size:14px}
-    .badges{margin-top:10px;display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+    <style>
+        
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-    /* Instagram glassy badge */
-    .insta-badge{display:inline-flex;align-items:center;gap:.5rem;padding:.5rem .75rem;border-radius:9999px;background:linear-gradient(180deg,rgba(255,255,255,.75),rgba(255,255,255,.55));border:1px solid rgba(255,122,182,.55);color:#b11052;text-decoration:none;font-weight:800;box-shadow:0 6px 20px rgba(255,58,123,.18),inset 0 1px 0 rgba(255,255,255,.7);backdrop-filter:blur(8px);animation:pulseGlow 1500ms ease-in-out infinite}
-    .insta-badge:hover{filter:saturate(1.1) brightness(1.05)}
+body {
+  background: #0a0a0a;
+  overflow-x: hidden;
+  font-family: 'Poppins', sans-serif;
+}
 
-    /* Cards */
-    .card{background:rgba(255,255,255,.85);backdrop-filter:blur(8px);border:1px solid #ffd1e1;border-radius:18px;box-shadow:0 14px 30px rgba(255,58,123,.12);padding:18px}
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0a0a0a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(#d4af37, #8b6914); border-radius: 3px; }
 
-    /* Layout */
-    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
-    @media (max-width:860px){.grid{grid-template-columns:1fr}}
+/* ===== INTRO SCREEN ===== */
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: radial-gradient(ellipse at center, #0d1b0d 0%, #020805 60%, #000 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
 
-    /* Inputs + Buttons */
-    .row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
-    input[type="text"]{flex:1;height:48px;min-width:220px;border-radius:12px;border:1px solid #f9a8d4;padding:0 14px;outline:none;background:rgba(255,255,255,.8)}
-    input[type="text"]:focus{box-shadow:0 0 0 3px rgba(244,114,182,.35)}
-    .btn-fancy{position:relative;overflow:hidden;transition:transform .15s ease, box-shadow .2s ease;color:#fff;border:none;cursor:pointer}
-    .btn-fancy::after{content:"";position:absolute;inset:0;background:linear-gradient(120deg,rgba(255,255,255,0) 0%, rgba(255,255,255,.35) 50%, rgba(255,255,255,0) 100%);transform:translateX(-120%);transition:transform .6s ease}
-    .btn-fancy:hover{transform:translateY(-2px) scale(1.01)}
-    .btn-fancy:hover::after{transform:translateX(120%)}
-    .btn-lg{height:48px;padding:0 18px;border-radius:12px;font-weight:700;background:linear-gradient(90deg,#f0abfc,#fb7185,#fb7185)}
-    .btn-lg:disabled{opacity:.6;cursor:not-allowed}
+.intro-screen.fade-out {
+  opacity: 0;
+  transform: scale(1.05);
+  pointer-events: none;
+}
 
-    /* Day buttons */
-    .days{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
-    .day{padding:8px 12px;border-radius:9999px;border:1px solid #fbcfe8;background:#fff;color:#be185d;font-weight:600;font-size:14px;transition:transform .15s ease, border-color .15s ease;animation:dayPulse 2000ms ease-in-out infinite}
-    .day:hover{transform:scale(1.02);border-color:#f472b6}
-    .day.active{background:#db2777;color:#fff;border-color:#db2777;box-shadow:0 8px 26px rgba(219,39,119,.25)}
+/* Stars */
+.stars-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
 
-    /* Joke box */
-    .jokeBox{min-height:106px;border:1px solid #ffe4ee;background:#fff2f7;border-radius:14px;padding:16px}
-    .joke{font-size:18px;line-height:1.5;color:#3f3f46}
-    .hint{color:#6b7280;font-size:14px}
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 50%;
+  animation: twinkle var(--dur) ease-in-out infinite alternate;
+  animation-delay: var(--delay);
+}
 
-    /* Credits */
-    .credits h3{margin:0 0 6px 0;font-size:18px;color:#27272a}
-    .credits .by{font-weight:600;color:#3f3f46}
+@keyframes twinkle {
+  from { opacity: 0.1; transform: scale(0.8); }
+  to   { opacity: 1;   transform: scale(1.2); }
+}
 
-    /* Animations */
-    @keyframes popIn{0%{transform:scale(.8);opacity:0}60%{transform:scale(1.05);opacity:1}100%{transform:scale(1)}}
-    @keyframes floatUp{0%{transform:translateY(0) scale(.8) rotate(0);opacity:1}100%{transform:translateY(-120vh) scale(1.2) rotate(20deg);opacity:0}}
-    @keyframes pulseGlow{0%,100%{text-shadow:0 0 0 rgba(255,58,123,0)}50%{text-shadow:0 0 16px rgba(255,58,123,.45)}}
-    @keyframes dayPulse{0%,100%{transform:translateY(0) scale(1);box-shadow:0 0 0 rgba(219,39,119,0)}50%{transform:translateY(-1px) scale(1.02);box-shadow:0 10px 26px rgba(219,39,119,.18)}}
+/* Moon */
+.moon {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #fff8dc, #f0c040 40%, #c8960c 80%, #8b6914);
+  box-shadow: 0 0 40px 20px rgba(212,175,55,0.4), 0 0 80px 40px rgba(212,175,55,0.15), inset -15px -10px 30px rgba(0,0,0,0.3);
+  position: relative;
+  animation: moonFloat 3s ease-in-out infinite, moonGlow 2s ease-in-out infinite alternate;
+  margin-bottom: 30px;
+}
 
-    /* Heart particles */
-    #burst-host{position:fixed;inset:0;pointer-events:none}
-    .sparkle-heart{position:fixed;filter:drop-shadow(0 2px 4px rgba(0,0,0,.1));animation:floatUp var(--dur,1200ms) ease-in forwards;z-index:50}
-  </style>
+.moon::after {
+  content: '';
+  position: absolute;
+  top: 20px; right: 15px;
+  width: 30px; height: 30px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+}
+
+@keyframes moonFloat {
+  0%,100% { transform: translateY(0); }
+  50%      { transform: translateY(-15px); }
+}
+
+@keyframes moonGlow {
+  from { box-shadow: 0 0 40px 20px rgba(212,175,55,0.4), 0 0 80px 40px rgba(212,175,55,0.15); }
+  to   { box-shadow: 0 0 60px 30px rgba(212,175,55,0.6), 0 0 120px 60px rgba(212,175,55,0.25); }
+}
+
+/* EID MUBARAK text */
+.eid-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: clamp(2.5rem, 8vw, 6rem);
+  font-weight: 900;
+  background: linear-gradient(135deg, #f5e642 0%, #d4af37 25%, #fff8dc 50%, #d4af37 75%, #c8960c 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-align: center;
+  line-height: 1.1;
+  filter: drop-shadow(0 0 30px rgba(212,175,55,0.8));
+  animation: titleReveal 1.2s cubic-bezier(0.22,1,0.36,1) both, titlePulse 3s ease-in-out 1.5s infinite;
+}
+
+@keyframes titleReveal {
+  from { opacity:0; transform: translateY(60px) scale(0.8); letter-spacing: 0.5em; }
+  to   { opacity:1; transform: translateY(0)   scale(1);   letter-spacing: normal; }
+}
+
+@keyframes titlePulse {
+  0%,100% { filter: drop-shadow(0 0 20px rgba(212,175,55,0.6)); }
+  50%     { filter: drop-shadow(0 0 40px rgba(212,175,55,1)); }
+}
+
+.eid-subtitle {
+  font-family: 'Amiri', serif;
+  font-size: clamp(1.2rem, 3vw, 2rem);
+  color: rgba(212,175,55,0.85);
+  text-align: center;
+  animation: fadeUp 1s ease 0.8s both;
+  margin-top: 10px;
+}
+
+.enter-btn {
+  margin-top: 50px;
+  padding: 16px 48px;
+  background: linear-gradient(135deg, #d4af37, #8b6914, #d4af37);
+  background-size: 200%;
+  border: none;
+  border-radius: 50px;
+  color: #0a0a0a;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  animation: fadeUp 1s ease 1.5s both, btnShine 3s linear 2.5s infinite;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(212,175,55,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.enter-btn:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 16px 48px rgba(212,175,55,0.6);
+}
+
+@keyframes btnShine {
+  0%   { background-position: 0%; }
+  50%  { background-position: 100%; }
+  100% { background-position: 0%; }
+}
+
+/* ===== MAIN APP ===== */
+.app-bg {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #050e05 0%, #0a1a08 30%, #0d1505 60%, #050a03 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Floating orbs */
+.orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+  animation: orbFloat var(--dur,8s) ease-in-out infinite alternate;
+}
+
+@keyframes orbFloat {
+  from { transform: translate(0,0) scale(1); }
+  to   { transform: translate(var(--tx,20px), var(--ty,20px)) scale(1.1); }
+}
+
+/* Gold divider */
+.gold-divider {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #d4af37, transparent);
+  margin: 16px 0;
+}
+
+/* ===== CARD ===== */
+.luxury-card {
+  background: linear-gradient(145deg, rgba(15,25,10,0.95) 0%, rgba(10,20,8,0.98) 100%);
+  border: 1px solid rgba(212,175,55,0.3);
+  border-radius: 24px;
+  box-shadow:
+    0 0 0 1px rgba(212,175,55,0.1),
+    0 20px 60px rgba(0,0,0,0.6),
+    0 0 80px rgba(212,175,55,0.08),
+    inset 0 1px 0 rgba(212,175,55,0.2);
+  backdrop-filter: blur(20px);
+  position: relative;
+  overflow: hidden;
+}
+
+.luxury-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(212,175,55,0.6), transparent);
+}
+
+/* ===== INPUTS ===== */
+.gold-input {
+  width: 100%;
+  padding: 14px 20px;
+  background: rgba(212,175,55,0.05);
+  border: 1px solid rgba(212,175,55,0.25);
+  border-radius: 12px;
+  color: #f5e642;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.gold-input:focus {
+  border-color: rgba(212,175,55,0.7);
+  background: rgba(212,175,55,0.1);
+  box-shadow: 0 0 20px rgba(212,175,55,0.15), inset 0 0 10px rgba(212,175,55,0.05);
+}
+
+.gold-input::placeholder { color: rgba(212,175,55,0.4); }
+
+/* ===== ANIMAL CARDS ===== */
+.animal-card {
+  cursor: pointer;
+  border: 2px solid rgba(212,175,55,0.2);
+  border-radius: 20px;
+  padding: 20px 16px;
+  background: rgba(212,175,55,0.03);
+  transition: all 0.35s cubic-bezier(0.22,1,0.36,1);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.animal-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(212,175,55,0.15), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.animal-card:hover { transform: translateY(-6px); border-color: rgba(212,175,55,0.5); }
+.animal-card:hover::after { opacity: 1; }
+
+.animal-card.selected {
+  border-color: #d4af37;
+  background: rgba(212,175,55,0.12);
+  box-shadow: 0 0 30px rgba(212,175,55,0.3), inset 0 0 20px rgba(212,175,55,0.05);
+  transform: translateY(-6px) scale(1.03);
+}
+
+.animal-card.selected::after { opacity: 1; }
+
+.animal-emoji {
+  font-size: 3.5rem;
+  display: block;
+  margin-bottom: 8px;
+  animation: emojiWiggle 2s ease-in-out infinite;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+}
+
+@keyframes emojiWiggle {
+  0%,100% { transform: rotate(-3deg) scale(1); }
+  50%      { transform: rotate(3deg) scale(1.05); }
+}
+
+/* ===== QUANTITY SLIDER ===== */
+.qty-btn {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.4);
+  background: rgba(212,175,55,0.1);
+  color: #d4af37;
+  font-size: 1.4rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+
+.qty-btn:hover {
+  background: rgba(212,175,55,0.25);
+  border-color: #d4af37;
+  box-shadow: 0 0 15px rgba(212,175,55,0.3);
+}
+
+.qty-display {
+  font-family: 'Cinzel Decorative', cursive;
+  color: #f5e642;
+  font-size: 2rem;
+  font-weight: 700;
+  min-width: 70px;
+  text-align: center;
+  text-shadow: 0 0 20px rgba(212,175,55,0.6);
+}
+
+/* ===== SUBMIT BUTTON ===== */
+.submit-btn {
+  width: 100%;
+  padding: 18px;
+  background: linear-gradient(135deg, #d4af37 0%, #f5e642 30%, #c8960c 60%, #d4af37 100%);
+  background-size: 300%;
+  border: none;
+  border-radius: 14px;
+  color: #0a0a0a;
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  animation: submitShine 4s linear infinite;
+  box-shadow: 0 8px 32px rgba(212,175,55,0.4);
+  transition: transform 0.2s, box-shadow 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 48px rgba(212,175,55,0.6);
+}
+
+@keyframes submitShine {
+  0%   { background-position: 0%; }
+  100% { background-position: 300%; }
+}
+
+/* ===== RESULT CARD ===== */
+.result-card {
+  animation: resultReveal 0.8s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes resultReveal {
+  from { opacity:0; transform: translateY(40px) scale(0.95); }
+  to   { opacity:1; transform: translateY(0) scale(1); }
+}
+
+/* ===== CONFETTI ===== */
+.confetti-piece {
+  position: fixed;
+  width: 10px; height: 10px;
+  top: -10px;
+  border-radius: 2px;
+  animation: confettiFall var(--dur) linear var(--delay) both;
+  pointer-events: none;
+  z-index: 9998;
+}
+
+@keyframes confettiFall {
+  0%   { transform: translateY(-10px) rotate(0deg) translateX(0); opacity:1; }
+  100% { transform: translateY(110vh) rotate(720deg) translateX(var(--tx)); opacity:0; }
+}
+
+/* ===== UTILS ===== */
+@keyframes fadeUp {
+  from { opacity:0; transform: translateY(30px); }
+  to   { opacity:1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity:0; }
+  to   { opacity:1; }
+}
+
+.gold-text {
+  background: linear-gradient(135deg, #f5e642, #d4af37, #c8960c);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.section-title {
+  font-family: 'Cinzel Decorative', cursive;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* ===== LEADERBOARD ===== */
+.leaderboard-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid rgba(212,175,55,0.12);
+  background: rgba(212,175,55,0.03);
+  transition: all 0.3s ease;
+  animation: fadeUp 0.5s ease both;
+  position: relative;
+  overflow: hidden;
+}
+
+.leaderboard-row:hover {
+  border-color: rgba(212,175,55,0.3);
+  background: rgba(212,175,55,0.07);
+  transform: translateX(4px);
+}
+
+.leaderboard-row.top-three {
+  border-color: rgba(212,175,55,0.3);
+  background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(212,175,55,0.03));
+}
+
+.leaderboard-row.new-entry {
+  border-color: #4caf50;
+  background: rgba(76,175,80,0.08);
+  box-shadow: 0 0 20px rgba(76,175,80,0.2);
+  animation: newEntryPop 0.6s cubic-bezier(0.22,1,0.36,1) both;
+}
+
+@keyframes newEntryPop {
+  from { transform: scale(0.92) translateX(-20px); opacity: 0; }
+  to   { transform: scale(1) translateX(0); opacity: 1; }
+}
+
+.new-badge {
+  position: absolute;
+  top: 6px; right: 6px;
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  font-size: 0.65rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 10px;
+  animation: pulseBadge 1s ease-in-out infinite alternate;
+}
+
+@keyframes pulseBadge {
+  from { box-shadow: 0 0 6px rgba(76,175,80,0.4); }
+  to   { box-shadow: 0 0 14px rgba(76,175,80,0.8); }
+}
+
+/* Image hover */
+.animal-photo {
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(212,175,55,0.3);
+  transition: transform 0.4s, box-shadow 0.4s;
+}
+.animal-photo:hover {
+  transform: scale(1.03);
+  box-shadow: 0 20px 60px rgba(212,175,55,0.2);
+}
+
+/* floating lantern */
+.lantern {
+  position: fixed;
+  font-size: 2rem;
+  animation: lanternFloat var(--dur) ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.6;
+  z-index: 0;
+}
+
+@keyframes lanternFloat {
+  0%   { transform: translateY(100vh) rotate(-5deg); opacity: 0; }
+  10%  { opacity: 0.6; }
+  90%  { opacity: 0.3; }
+  100% { transform: translateY(-120px) rotate(5deg); opacity: 0; }
+}
+
+/* Hissa share sections */
+.hissa-info {
+  background: rgba(212,175,55,0.08);
+  border: 1px solid rgba(212,175,55,0.2);
+  border-radius: 12px;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: rgba(212,175,55,0.7);
+}
+
+/* Joke card */
+.joke-card {
+  background: linear-gradient(135deg, rgba(212,175,55,0.08), rgba(200,150,12,0.05));
+  border: 1px dashed rgba(212,175,55,0.35);
+  border-radius: 16px;
+  padding: 20px;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
+    </style>
 </head>
 <body>
-  <div id="burst-host"></div>
-  <header>
-    <h1 id="greeting">Valentine Week LOL Station</h1>
-    <p class="sub">Naam daalo, day choose karo, aur bezzati wali roast lo – har click pe hearts udte hain! 💘</p>
-    <div class="badges">
-      <div class="insta-badge" style="font-weight:900">Made by ANAS SAKA 🇵🇸</div>
-      <a class="insta-badge" href="https://instagram.com/phising.attaker" target="_blank" rel="noreferrer" aria-label="Open Instagram: @phising.attaker">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden>
-          <defs>
-            <linearGradient id="ig" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#ff3b7b"/><stop offset="100%" stop-color="#9b5cff"/></linearGradient>
-          </defs>
-          <rect x="3" y="3" width="18" height="18" rx="5" stroke="url(#ig)" stroke-width="2"/>
-          <circle cx="12" cy="12" r="4" stroke="url(#ig)" stroke-width="2"/>
-          <circle cx="17" cy="7" r="1.2" fill="#ff7ab6"/>
-        </svg>
-        <span>@phising.attaker</span>
-      </a>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Destructure hooks from global React object for easy CDN usage
+        const { useState, useEffect, useRef, useCallback } = React;
+
+        
+
+// ─── Types ──────────────────────────────────────────────────────────────────
+type Animal = "bakra" | "bhes" | "camel";
+type Step   = "intro" | "main";
+
+interface Registration {
+  id:        string;
+  name:      string;
+  phone:     string;
+  address:   string;
+  city:      string;
+  animal:    Animal;
+  qty:       number;
+  hissa:     boolean;
+  photo:     string | null; // base64
+  time:      number;
+  rank?:     number;
+}
+
+interface AnimalConfig {
+  id:      Animal;
+  emoji:   string;
+  name:    string;
+  urdu:    string;
+  img:     string;
+  hissa:   boolean;
+  shares?: number;
+  price:   string;
+  halal:   string;
+  badge:   string;
+}
+
+// ─── Animal Data ──────────────────────────────────────────────────────────────
+const ANIMALS: AnimalConfig[] = [
+  {
+    id:    "bakra",
+    emoji: "🐐",
+    name:  "Bakra (Goat)",
+    urdu:  "بکرا",
+    img:   "https://images.pexels.com/photos/26842300/pexels-photo-26842300.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    hissa: false,
+    price: "Individual",
+    badge: "🐐 Bakra Wala",
+    halal: "Bakre ko halal karte waqt tasmiyah wa takbeer padhi jaati hai. Ek hi tez jhatke mein halal kiya jaata hai taake takleef na ho. Yeh Sunnah-e-Ibrahim ﷺ ki yadgar hai. Allah ki rehmat aap par naazil ho!",
+  },
+  {
+    id:    "bhes",
+    emoji: "🐃",
+    name:  "Bhes / Gaay (Buffalo)",
+    urdu:  "بھینس / گائے",
+    img:   "https://images.pexels.com/photos/28308873/pexels-photo-28308873.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    hissa: true,
+    shares: 7,
+    price: "7 Hisse",
+    badge: "🐃 Bhes Wala",
+    halal: "Bhes / Gaay mein saat log hissa le sakte hain. Halal karte waqt sirf ek baar 'Bismillah Allahu Akbar' kaha jaata hai. Gosht ke teen hisse kiye jaate hain – ek apne liye, ek rishtedaaron ke liye, ek ghareebon ke liye. SubhanAllah!",
+  },
+  {
+    id:    "camel",
+    emoji: "🐪",
+    name:  "Oont (Camel)",
+    urdu:  "اونٹ",
+    img:   "https://images.pexels.com/photos/30688194/pexels-photo-30688194.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+    hissa: true,
+    shares: 7,
+    price: "7 Hisse",
+    badge: "🐪 Oont Wala",
+    halal: "Oont ko khade khade nahr (halal) kiya jaata hai — yahi Sunnah hai. Saat logo ka hissa hota hai. Oont ki qurbani Hazrat Ibrahim ﷺ ki azmat ki nishaani hai aur iska sawab bahut zyada hai. Allah qabool farmaye!",
+  },
+];
+
+const JOKES = [
+  "🐐 Bakra: 'Main samajh gaya tha jab usne mujhe ghee se malish ki...' 😭😂",
+  "🤣 Eid ki subah — Baap ne pucha: 'Beta, neend aayi?' Beta: 'Haan Abbu… bakre ko bhi aayi thi!' 😂",
+  "😂 Whatsapp status of every bakra on Eid eve: 'Going offline… permanently.' 😂",
+  "🐃 Bhes boli: 'Mere 7 dost hain jo share karte hain mujhe… mujhe zyada problem unse nahi, gosht barabar hoga ya nahi — yeh sawaal hai!' 😂",
+  "🐪 Oont ne bola: 'Main 7 logon ka bojh uthata tha, aaj bhi 7 logon ke kaam aaunga!' 😭🤲",
+  "😂 Eid ka asli test: Gosht ki handi dekh ke bhi wazu rehna! 🕌",
+];
+
+const RANK_BADGES = ["👑 #1 BADSHAH", "🥈 #2 SHAHZADA", "🥉 #3 AMIR", "🏅 #4", "🏅 #5", "⭐ #6", "⭐ #7", "✨ #8", "✨ #9", "🌙 #10"];
+const CONFETTI_COLORS = ["#d4af37","#f5e642","#c8960c","#fff8dc","#4caf50","#8bc34a","#ffffff","#ffd700","#ff6b6b","#e91e63"];
+
+// ─── LocalStorage helpers ─────────────────────────────────────────────────────
+const LS_KEY = "eid_qurbani_registrations";
+function loadRegs(): Registration[] {
+  try { return JSON.parse(localStorage.getItem(LS_KEY) || "[]"); } catch { return []; }
+}
+function saveRegs(regs: Registration[]) {
+  localStorage.setItem(LS_KEY, JSON.stringify(regs));
+}
+
+// ─── Star Field ───────────────────────────────────────────────────────────────
+function StarField() {
+  const stars = Array.from({ length: 100 }, (_, i) => ({
+    id: i,
+    left: `${Math.random()*100}%`, top: `${Math.random()*100}%`,
+    size: `${Math.random()*2.5+0.8}px`,
+    dur: `${Math.random()*3+1.5}s`, delay: `${Math.random()*4}s`,
+  }));
+  return (
+    <div className="stars-container">
+      {stars.map(s => (
+        <div key={s.id} className="star" style={{ left:s.left,top:s.top,width:s.size,height:s.size,["--dur" as any]:s.dur,["--delay" as any]:s.delay }} />
+      ))}
     </div>
-  </header>
+  );
+}
 
-  <main class="container" id="app">
-    <section id="start-card" class="card" aria-live="polite">
-      <label for="name-input" style="display:block;font-weight:600;color:#374151;margin-bottom:8px">Pehle apna naam likho</label>
-      <div class="row">
-        <input id="name-input" type="text" placeholder="Jaise: Ansh, Priya, etc." />
-        <button id="start-btn" class="btn-fancy btn-lg" disabled>Start 🚀</button>
+// ─── Confetti ─────────────────────────────────────────────────────────────────
+function Confetti({ show }: { show: boolean }) {
+  if (!show) return null;
+  return (
+    <>
+      {Array.from({ length: 90 }, (_, i) => (
+        <div key={i} className="confetti-piece" style={{
+          left: `${Math.random()*100}%`,
+          background: CONFETTI_COLORS[Math.floor(Math.random()*CONFETTI_COLORS.length)],
+          borderRadius: Math.random()>0.5 ? "50%" : "2px",
+          ["--dur" as any]: `${Math.random()*2+2}s`,
+          ["--delay" as any]: `${Math.random()*2}s`,
+          ["--tx" as any]: `${(Math.random()-0.5)*250}px`,
+        }} />
+      ))}
+    </>
+  );
+}
+
+// ─── Floating Lanterns ────────────────────────────────────────────────────────
+function Lanterns() {
+  return (
+    <>
+      {["🪔","✨","🌙","⭐","🕌","🌙","✨","🪔"].map((icon,i) => (
+        <div key={i} className="lantern" style={{ left:`${8+i*12}%`,["--dur" as any]:`${7+i*1.5}s`,animationDelay:`${i*2.2}s` }}>{icon}</div>
+      ))}
+    </>
+  );
+}
+
+// ─── Intro Screen ─────────────────────────────────────────────────────────────
+function IntroScreen({ onEnter }: { onEnter: () => void }) {
+  const [out, setOut] = useState(false);
+  const handle = () => { setOut(true); setTimeout(onEnter, 800); };
+  return (
+    <div className={`intro-screen ${out?"fade-out":""}`}>
+      <StarField />
+      {[{t:"12%",l:"8%",i:"🕌",d:"4s"},{t:"20%",r:"10%",i:"⭐",d:"5s"},{b:"15%",l:"12%",i:"🌙",d:"3.5s"},{b:"20%",r:"8%",i:"🪔",d:"4.5s"}].map((o,i) => (
+        <div key={i} style={{ position:"absolute",top:(o as any).t,left:(o as any).l,right:(o as any).r,bottom:(o as any).b,fontSize:"2rem",animation:`moonFloat ${o.d} ease-in-out infinite ${i%2?"reverse":""}`,opacity:0.5 }}>{o.i}</div>
+      ))}
+      <div className="moon" />
+      <div className="eid-title">EID MUBARAK</div>
+      <div style={{ fontFamily:"'Amiri',serif",direction:"rtl",fontSize:"clamp(1.4rem,3vw,2.2rem)",color:"rgba(212,175,55,0.85)",animation:"fadeUp 1s ease 1s both",marginTop:"8px" }}>عيد مبارك ✨</div>
+      <div style={{ color:"rgba(212,175,55,0.6)",fontSize:"clamp(0.9rem,2vw,1.1rem)",animation:"fadeUp 1s ease 1.2s both",marginTop:"4px" }}>Qurbani Portal — Luxury Leaderboard Edition</div>
+      <div style={{ width:"300px",height:"2px",background:"linear-gradient(90deg,transparent,#d4af37,transparent)",margin:"20px 0",animation:"fadeIn 1s ease 1.4s both" }} />
+      <div style={{ display:"flex",gap:"20px",fontSize:"3rem",animation:"fadeUp 1s ease 1.6s both",filter:"drop-shadow(0 0 10px rgba(212,175,55,0.5))" }}>
+        {["🐐","🐃","🐪"].map((e,i) => <span key={i} style={{ animation:`emojiWiggle ${2+i*0.3}s ease-in-out ${i*0.3}s infinite` }}>{e}</span>)}
       </div>
-      <p class="hint" style="margin-top:10px">Button dabao aur magic dekho – har click pe hearts udte hain! ✨</p>
-    </section>
+      <button className="enter-btn" onClick={handle}>🌙 &nbsp; Daakhil Ho &nbsp; 🌙</button>
+      <p style={{ color:"rgba(212,175,55,0.4)",fontFamily:"'Amiri',serif",fontSize:"1rem",marginTop:"24px",animation:"fadeUp 1s ease 2s both" }}>بسم الله الرحمن الرحيم</p>
+    </div>
+  );
+}
 
-    <section id="jokes-card" class="grid" style="display:none">
-      <section class="card">
-        <div id="days" class="days"></div>
-        <div class="jokeBox">
-          <p id="joke" class="joke"><span id="emoji">✨</span> <span id="joke-text" style="margin-left:6px;color:#3f3f46">Koi day select karo, phir niche button dabao – naam ke saath bezzati wali roast aayegi! 😄</span></p>
-        </div>
-        <div class="row" style="margin-top:12px;align-items:center">
-          <button id="joke-btn" class="btn-fancy btn-lg" style="background:linear-gradient(90deg,#a21caf,#ec4899,#ef4444);display:inline-flex;gap:8px;align-items:center">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff" aria-hidden><path d="M12 21s-5.052-3.36-8.016-6.324C.912 11.604 1.14 7.8 3.6 5.52c2.208-2.052 5.4-1.344 6.996.552C12.192 4.176 15.384 3.468 17.592 5.52c2.46 2.28 2.688 6.084-.384 9.156C17.052 17.64 12 21 12 21z"/></svg>
-            <span>Bezzati Lao!</span>
-          </button>
-          <span class="hint">Har baar alag roast, har click pe hearts! 💗</span>
-        </div>
-      </section>
-      <aside class="card credits">
-        <h3>Made by ANAS SAKA 🇵🇸</h3>
-        <a class="insta-badge" href="https://instagram.com/phising.attaker" target="_blank" rel="noreferrer">@phising.attaker</a>
-        <div class="hint" style="margin-top:10px">Insta badge pe click karo — direct profile open ho jayega! ✨</div>
-      </aside>
-    </section>
-  </main>
-
-  <footer style="text-align:center;color:#6b7280;font-size:12px;padding:18px 0 28px">Masti only. Static single-file hai — direct GitHub pe host kar sakte ho.</footer>
-
-  <script>
-    (function(){
-      const DAYS=["Rose Day","Propose Day","Chocolate Day","Teddy Day","Promise Day","Hug Day","Kiss Day","Valentine’s Day"];
-      const EMOJIS=["🤣","😂","😹","😆","🤭","💀","😝","✨","💘","😜"];
-      const JOKES_BY_INTENSITY={
-        "Rose Day": {
-          mild: [
-            "{name}, गुलाब दिया तो उसने बोला: 'तेरा गुलाब तो पहले से ही मुरझाया है' 😅",
-            "{name} गुलाब लेकर गया/गई, सामने वाला बोला: 'भाई पहले खुद की हालत देख' 😂",
-            "गुलाब नहीं, {name} को तो मोटिवेशन चाहिए 😄",
-          ],
-          medium: [
-            "{name}, गुलाब देने गया/गई और जवाब आया: 'भाई ये तो सूखा हुआ है' 🤣",
-            "{name} का गुलाब देखकर सामने वाला बोला: 'पानी बच गया, शुक्रिया' 💀",
-            "{name}, तेरे गुलाब से ज्यादा fresh तो मेरी नींद है 😹",
-          ],
-          savage: [
-            "{name} गुलाब देने गया/गई, उसने बोला: 'ये गुलाब नहीं, तेरी उम्मीद मुरझाई है' 💀",
-            "{name}, तेरे गुलाब से प्यार नहीं आया, हंसी जरूर आ गई 😂",
-            "गुलाब दिया {name} ने, सामने वाला बोला: 'यार ये तो sympathy gift लग रहा है' 🤣",
-          ]
-        },
-        "Propose Day": {
-          mild: [
-            "{name} ने प्रपोज किया, जवाब आया: 'अभी घरवाले नहीं मानेंगे' 😄",
-            "{name} का प्रपोज देख कर बोला: 'सोचूंगा/सोचूंगी' — मतलब नहीं 😂",
-            "{name}, तेरा प्रपोज सुनकर हिम्मत तो आई, पर जवाब नहीं 😅",
-          ],
-          medium: [
-            "{name} ने प्रपोज किया, उसने देखा और बोला: 'भाई मैं तो दोस्त समझता/समझती थी' 🤣",
-            "{name} का प्रपोज = seen, reply नहीं 💀",
-            "{name} को प्रपोज किया, जवाब मिला: 'हंसने दिया करो' 😂",
-          ],
-          savage: [
-            "{name} का प्रपोज सुनकर सामने वाला बोला: 'अभी तक तूने ये सपना देखा?' 💀",
-            "{name} को प्रपोज किया, reply आया: 'भाई तू तो भाई है' 😂",
-            "{name} का प्रपोज देखकर Cupid भी बोला: 'मैं छुट्टी पर हूँ' 🤣",
-          ]
-        },
-        "Chocolate Day": {
-          mild: [
-            "{name} ने चॉकलेट दी, उसने कहा: 'धन्यवाद, बस इतना ही?' 😄",
-            "{name} की चॉकलेट मीठी थी, पर जवाब फीका 😂",
-            "चॉकलेट दी {name} ने, सामने वाला बोला: 'डाइट पे हूँ… फिर भी दे दे' 😅",
-          ],
-          medium: [
-            "{name} ने चॉकलेट दी, उसने कहा: 'ठीक है, अब बाकी भी दे' 🤣",
-            "चॉकलेट {name} ने दी, जवाब आया: 'कैलोरी का बिल तुम दोगे?' 💀",
-            "{name} का 'थोड़ा' मतलब पूरा डिब्बा 😹",
-          ],
-          savage: [
-            "{name} की चॉकलेट देखकर बोला: 'इतना ही? तेरी औकात बस यही?' 💀",
-            "{name} ने चॉकलेट दी, सामने वाला बोला: 'इसके साथ भरोसा भी दे' 😂",
-            "{name} की मिठास कम, नखरे ज्यादा — चॉकलेट भी शर्माई 😜",
-          ]
-        },
-        "Teddy Day": {
-          mild: [
-            "{name} ने टेडी दिया, सामने वाला बोला: 'टेडी प्यारा है, तू नहीं' 😅",
-            "टेडी दिया {name} ने, जवाब मिला: 'ये तो ठीक है, तू कब सुधरेगा?' 😂",
-            "{name} का टेडी देख कर बोला: 'चल ठीक है, रख लेते हैं' 😄",
-          ],
-          medium: [
-            "{name} ने टेडी दिया, सामने वाला बोला: 'टेडी तो प्यारा है, तू नहीं' 🤣",
-            "{name} का टेडी देख कर बोला: 'टेडी ठीक है, तू थोड़ा कम बोल' 💀",
-            "{name} के टेडी से ज्यादा सुकून तो नींद में मिलता है 😹",
-          ],
-          savage: [
-            "{name} का टेडी देख कर बोला: 'ये रख लो, तुम खुद बच्चा ही रहो' 💀",
-            "{name} ने टेडी दिया, जवाब आया: 'भाई तू खुद टेडी जैसा सोता है' 😂",
-            "{name}, टेडी से प्यार आ गया, तुझसे नहीं 🤣",
-          ]
-        },
-        "Promise Day": {
-          mild: [
-            "{name} का वादा: कल से सुधरूंगा — फिर कल आया ही नहीं 😄",
-            "{name} ने वादा किया, भरोसा थोड़ा सा बढ़ा 😂",
-            "{name} के वादे मीठे हैं, बस पूरे कम होते हैं 😅",
-          ],
-          medium: [
-            "{name} का वादा मतलब कल फिर नई कहानी 🤣",
-            "{name} के वादे सुनने में अच्छे, निभाने में गायब 💀",
-            "{name} ने बोला: पक्का! — और फिर गायब 😂",
-          ],
-          savage: [
-            "{name} का वादा उतना ही भरोसेमंद जितना सस्ते data pack का signal 💀",
-            "{name} के वादे TV के ads जैसे — आते हैं, जाते हैं 😂",
-            "वादा किया {name} ने, सच में? मजाक था 🤣",
-          ]
-        },
-        "Hug Day": {
-          mild: [
-            "{name} का hug ठीक है, पर तेरे attitude का heater चाहिए 😄",
-            "{name} को हग दिया, उसने कहा: 'थोड़ा warm हो जाओ' 😂",
-            "{name} का हग मिला, मूड थोड़ा ठीक हुआ 🤭",
-          ],
-          medium: [
-            "{name} का हग इतना ठंडा कि AC भी शर्मा जाए 😂",
-            "हग Day पर {name} का सिस्टम hang हो गया 😆",
-            "{name} ने हग दिया, पर vibe offline थी 💀",
-          ],
-          savage: [
-            "{name} का हग ऐसा कि दिल भी सोचे: 'ये क्या था?' 💀",
-            "हग मांगा {name} से, जवाब मिला: 'भाई पहले mood set कर' 😂",
-            "{name} का हग = कम गर्मी, ज्यादा formalities 🤣",
-          ]
-        },
-        "Kiss Day": {
-          mild: [
-            "{name}, तू तो single है, mingle कब हुआ? 😄",
-            "{name} ने kiss की बात की, सामने वाला बोला: 'पहले दोस्ती' 😂",
-            "Kiss Day पर {name} का confidence छुट्टी पर था 😅",
-          ],
-          medium: [
-            "{name} तो single था, बिना बताए mingle कैसे हो गया? 💀",
-            "{name} ने आइने को kiss दी, असली में network नहीं 😂",
-            "Confidence गायब, {name} का Kiss Day pending 😜",
-          ],
-          savage: [
-            "{name} की love story अब भी loading... 😭",
-            "आइना बोला: मुझे तो प्यार मिला, {name} को कब? 💀",
-            "Kiss Day पर भी {name} को 'बाद में' मिला 🤣",
-          ]
-        },
-        "Valentine’s Day": {
-          mild: [
-            "{name} की कहानी: थोड़ा प्यार, थोड़ा सब्र — सब ठीक हो सकता है 😊",
-            "{name} का प्लान अच्छा है, बस मेहनत कम 😄",
-            "छोटी कोशिशें बड़ी बात बनती हैं, {name} सीख लो 😌",
-          ],
-          medium: [
-            "{name} की love story: उम्मीदें 100, कोशिशें 0 🤣",
-            "{name} के कैलेंडर में 'कभी न कभी' लिखा है 😹",
-            "प्यार कम, बहाने ज्यादा — {name} स्पेशल 💘",
-          ],
-          savage: [
-            "{name} की love story: बातें बड़ी, काम छोटे 💀",
-            "{name} का रोमांस अक्सर छुट्टी पर रहता है 😂",
-            "Cupid भी बोला: {name}, अब तू खुद संभाल 🤣",
-          ]
+// ─── Avatar / Photo Upload ────────────────────────────────────────────────────
+function PhotoUpload({ value, onChange }: { value: string|null; onChange: (v: string|null) => void }) {
+  const ref = useRef<HTMLInputElement>(null);
+  const handleFile = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = ev => onChange(ev.target?.result as string);
+    reader.readAsDataURL(file);
+  };
+  return (
+    <div style={{ textAlign:"center" }}>
+      <div
+        onClick={() => ref.current?.click()}
+        style={{
+          width:"110px",height:"110px",borderRadius:"50%",
+          border:`2px dashed ${value?"#d4af37":"rgba(212,175,55,0.3)"}`,
+          background: value ? "transparent" : "rgba(212,175,55,0.04)",
+          cursor:"pointer",display:"flex",alignItems:"center",justifyContent:"center",
+          margin:"0 auto",overflow:"hidden",transition:"all 0.3s",
+          boxShadow: value ? "0 0 30px rgba(212,175,55,0.4)" : "none",
+          position:"relative",
+        }}
+      >
+        {value
+          ? <img src={value} alt="profile" style={{ width:"100%",height:"100%",objectFit:"cover" }} />
+          : <div style={{ textAlign:"center" }}>
+              <div style={{ fontSize:"2rem" }}>📷</div>
+              <div style={{ color:"rgba(212,175,55,0.5)",fontSize:"0.7rem",marginTop:"4px" }}>Photo Upload</div>
+            </div>
         }
-      };
+        {value && (
+          <div style={{ position:"absolute",inset:0,background:"rgba(0,0,0,0.4)",display:"flex",alignItems:"center",justifyContent:"center",opacity:0,transition:"opacity 0.3s" }}
+            onMouseEnter={e=>(e.currentTarget.style.opacity="1")} onMouseLeave={e=>(e.currentTarget.style.opacity="0")}>
+            <span style={{ color:"white",fontSize:"0.75rem" }}>Change</span>
+          </div>
+        )}
+      </div>
+      <input ref={ref} type="file" accept="image/*" style={{ display:"none" }} onChange={handleFile} />
+      {value && (
+        <button onClick={() => onChange(null)} style={{ marginTop:"8px",background:"transparent",border:"1px solid rgba(255,100,100,0.3)",color:"rgba(255,100,100,0.7)",borderRadius:"20px",padding:"4px 12px",fontSize:"0.75rem",cursor:"pointer" }}>
+          Hatao ✕
+        </button>
+      )}
+    </div>
+  );
+}
 
-      const byId=id=>document.getElementById(id);
-      const nameInput=byId('name-input');
-      const startBtn=byId('start-btn');
-      const startCard=byId('start-card');
-      const jokesCard=byId('jokes-card');
-      const daysWrap=byId('days');
-      const jokeText=byId('joke-text');
-      const emojiSpan=byId('emoji');
-      const jokeBtn=byId('joke-btn');
-      const greeting=byId('greeting');
-      const burstHost=byId('burst-host');
+// ─── Share Modal ──────────────────────────────────────────────────────────────
+function ShareModal({ reg, onClose }: { reg: Registration; onClose: () => void }) {
+  const animal = ANIMALS.find(a => a.id === reg.animal)!;
+  const text = `🌙 Eid Mubarak! Mujhe register ho gaye Qurbani Portal par!\n\n👤 Naam: ${reg.name}\n🏙️ City: ${reg.city}\n${animal.emoji} Jaanwar: ${animal.name}\n🔢 Qty: ${reg.qty} ${reg.hissa?"Hisse":"Bakre"}\n\n✨ Aap bhi register karo! @anas.saka_`;
+  const encoded = encodeURIComponent(text);
+  const shareLinks = [
+    { label:"WhatsApp",    color:"#25D366", icon:"💬", url:`https://wa.me/?text=${encoded}` },
+    { label:"Facebook",    color:"#1877F2", icon:"📘", url:`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(window.location.href)}&quote=${encoded}` },
+    { label:"Twitter / X", color:"#1DA1F2", icon:"🐦", url:`https://twitter.com/intent/tweet?text=${encoded}` },
+    { label:"Telegram",    color:"#2CA5E0", icon:"✈️", url:`https://t.me/share/url?url=${encodeURIComponent(window.location.href)}&text=${encoded}` },
+  ];
 
-      let started=false;let currentDay=null;let lastIndex={};
-      let intensity='medium';
+  const copyText = async () => {
+    await navigator.clipboard.writeText(text);
+    alert("✅ Text copy ho gaya! Paste karo jahan chahein.");
+  };
 
-      function randomInt(n){return Math.floor(Math.random()*n)}
-      function formatJoke(tpl){const nm=(nameInput.value||'Dost').trim();return tpl.replace(/\{name\}/g,nm)}
-      function pickJoke(day){const list=JOKES_BY_INTENSITY[day][intensity];if(!list||!list.length)return'';let i=randomInt(list.length);const prev=lastIndex[day+intensity];if(list.length>1 && i===prev){i=(i+1)%list.length}lastIndex[day+intensity]=i;return formatJoke(list[i])}
+  return (
+    <div style={{ position:"fixed",inset:0,zIndex:10000,display:"flex",alignItems:"center",justifyContent:"center",background:"rgba(0,0,0,0.8)",backdropFilter:"blur(8px)",padding:"20px" }} onClick={onClose}>
+      <div className="luxury-card" style={{ maxWidth:"420px",width:"100%",padding:"32px",animation:"resultReveal 0.4s ease both" }} onClick={e=>e.stopPropagation()}>
+        <div style={{ textAlign:"center",marginBottom:"24px" }}>
+          <div style={{ fontSize:"2.5rem",marginBottom:"8px" }}>🚀</div>
+          <h3 className="section-title gold-text" style={{ fontSize:"1.3rem" }}>Share Karein!</h3>
+          <p style={{ color:"rgba(212,175,55,0.5)",fontSize:"0.85rem",marginTop:"6px" }}>Doston ko batao, zyada log join karein 🌙</p>
+        </div>
+        <div style={{ display:"grid",gridTemplateColumns:"1fr 1fr",gap:"12px",marginBottom:"16px" }}>
+          {shareLinks.map(l => (
+            <a key={l.label} href={l.url} target="_blank" rel="noreferrer"
+              style={{ display:"flex",alignItems:"center",gap:"8px",padding:"12px 14px",borderRadius:"12px",background:`${l.color}22`,border:`1px solid ${l.color}44`,color:l.color,textDecoration:"none",fontSize:"0.9rem",fontWeight:600,transition:"all 0.2s" }}
+              onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background=`${l.color}44`}}
+              onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background=`${l.color}22`}}>
+              <span>{l.icon}</span> {l.label}
+            </a>
+          ))}
+        </div>
+        <button onClick={copyText} style={{ width:"100%",padding:"12px",background:"rgba(212,175,55,0.1)",border:"1px solid rgba(212,175,55,0.3)",borderRadius:"12px",color:"#d4af37",cursor:"pointer",fontFamily:"'Poppins',sans-serif",fontSize:"0.9rem",marginBottom:"12px" }}>
+          📋 Text Copy Karein
+        </button>
+        <button onClick={onClose} style={{ width:"100%",padding:"10px",background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"12px",color:"rgba(255,255,255,0.4)",cursor:"pointer",fontSize:"0.85rem" }}>Bند Karein ✕</button>
+      </div>
+    </div>
+  );
+}
 
-      function spawnBurst(node){const rect=(node||jokeBtn).getBoundingClientRect();const baseLeft=rect.left+rect.width/2;const baseTop=rect.top+rect.height/2;const count=10+Math.floor(Math.random()*8);for(let i=0;i<count;i++){const span=document.createElement('span');span.className='sparkle-heart';span.textContent='❤';const size=10+Math.random()*18;const hues=["var(--heart-red)","var(--heart-pink)","var(--heart-purple)"];span.style.left=(baseLeft+(Math.random()-0.5)*160)+'px';span.style.top=(baseTop+8)+'px';span.style.fontSize=size+'px';span.style.color=hues[i%3];span.style.setProperty('--dur',(900+Math.random()*800)+'ms');burstHost.appendChild(span);setTimeout(()=>span.remove(),1700)} }
+// ─── Leaderboard Card ─────────────────────────────────────────────────────────
+function LeaderboardCard({ reg, index, isNew }: { reg: Registration; index: number; isNew?: boolean }) {
+  const animal = ANIMALS.find(a => a.id === reg.animal)!;
+  const rankLabel = RANK_BADGES[index] ?? `🌟 #${index+1}`;
+  const topThree  = index < 3;
 
-      function setGreeting(){if(!started){greeting.textContent='Valentine Week LOL Station'}else{greeting.textContent='Hi, '+(nameInput.value||'Dost').trim()+'!'}}
+  return (
+    <div className={`leaderboard-row ${topThree?"top-three":""} ${isNew?"new-entry":""}`} style={{ animationDelay:`${index*0.06}s` }}>
+      {/* Rank */}
+      <div style={{ minWidth:"80px",textAlign:"center" }}>
+        <div style={{ fontFamily:"'Cinzel Decorative',cursive",fontSize:topThree?"1.1rem":"0.8rem",color:index===0?"#ffd700":index===1?"#c0c0c0":index===2?"#cd7f32":"rgba(212,175,55,0.6)",textShadow:topThree?"0 0 10px currentColor":"none",whiteSpace:"nowrap" }}>{rankLabel}</div>
+      </div>
+      {/* Avatar */}
+      <div style={{ width:"52px",height:"52px",borderRadius:"50%",overflow:"hidden",border:`2px solid ${index===0?"#ffd700":index===1?"#c0c0c0":index===2?"#cd7f32":"rgba(212,175,55,0.25)"}`,flexShrink:0,boxShadow:topThree?"0 0 15px rgba(212,175,55,0.4)":"none" }}>
+        {reg.photo
+          ? <img src={reg.photo} alt={reg.name} style={{ width:"100%",height:"100%",objectFit:"cover" }} />
+          : <div style={{ width:"100%",height:"100%",background:"linear-gradient(135deg,rgba(212,175,55,0.2),rgba(212,175,55,0.05))",display:"flex",alignItems:"center",justifyContent:"center",fontSize:"1.4rem" }}>{animal.emoji}</div>
+        }
+      </div>
+      {/* Info */}
+      <div style={{ flex:1,minWidth:0 }}>
+        <div style={{ fontWeight:700,color:topThree?"#f5e642":"rgba(255,255,255,0.9)",fontSize:"0.95rem",overflow:"hidden",textOverflow:"ellipsis",whiteSpace:"nowrap" }}>{reg.name}</div>
+        <div style={{ display:"flex",gap:"8px",flexWrap:"wrap",marginTop:"3px" }}>
+          <span style={{ fontSize:"0.75rem",color:"rgba(212,175,55,0.6)" }}>📍 {reg.city}</span>
+          <span style={{ fontSize:"0.75rem",color:"rgba(212,175,55,0.5)" }}>{animal.emoji} {animal.name.split(" ")[0]}</span>
+        </div>
+      </div>
+      {/* Badge */}
+      <div style={{ textAlign:"right",flexShrink:0 }}>
+        <div style={{ background:"rgba(212,175,55,0.12)",border:"1px solid rgba(212,175,55,0.25)",borderRadius:"20px",padding:"4px 10px",fontSize:"0.75rem",color:"#d4af37",whiteSpace:"nowrap" }}>
+          {reg.hissa ? `${reg.qty} Hissa` : `${reg.qty} ${animal.emoji}`}
+        </div>
+        <div style={{ fontSize:"0.65rem",color:"rgba(212,175,55,0.35)",marginTop:"4px" }}>
+          {new Date(reg.time).toLocaleTimeString("en-PK",{ hour:"2-digit",minute:"2-digit" })}
+        </div>
+      </div>
+      {isNew && <div className="new-badge">NEW ✨</div>}
+    </div>
+  );
+}
 
-      function renderDays(){daysWrap.innerHTML='';DAYS.forEach(d=>{const b=document.createElement('button');b.type='button';b.className='day'+(currentDay===d?' active':'');b.textContent=d;b.addEventListener('click',()=>{currentDay=d;renderDays();jokeText.textContent='';spawnBurst(b)});daysWrap.appendChild(b)})}
+// ─── MAIN APP ─────────────────────────────────────────────────────────────────
+function App() {
+  const [step,            setStep]           = useState<Step>("intro");
+  const [registrations,   setRegistrations]  = useState<Registration[]>(loadRegs);
+  const [newEntryId,      setNewEntryId]     = useState<string|null>(null);
+  const [showConfetti,    setShowConfetti]   = useState(false);
+  const [showShareModal,  setShowShareModal] = useState(false);
+  const [shareTarget,     setShareTarget]    = useState<Registration|null>(null);
+  const [activeTab,       setActiveTab]      = useState<"register"|"leaderboard">("leaderboard");
+  const [resultReg,       setResultReg]      = useState<Registration|null>(null);
+  const [jokeIdx]                            = useState(() => Math.floor(Math.random()*JOKES.length));
 
-      function onStart(){if(!nameInput.value.trim())return;started=true;setGreeting();startCard.style.display='none';jokesCard.style.display='grid';const idx=(new Date().getDate())%DAYS.length;currentDay=DAYS[idx];renderDays();spawnBurst(startBtn)}
+  // Form state
+  const [name,     setName]    = useState("");
+  const [phone,    setPhone]   = useState("");
+  const [address,  setAddress] = useState("");
+  const [city,     setCity]    = useState("");
+  const [animal,   setAnimal]  = useState<Animal|null>(null);
+  const [qty,      setQty]     = useState(1);
+  const [photo,    setPhoto]   = useState<string|null>(null);
+  const [errors,   setErrors]  = useState<Record<string,string>>({});
 
-      function onShowJoke(){if(!currentDay)return;emojiSpan.textContent=EMOJIS[randomInt(EMOJIS.length)];const line=pickJoke(currentDay);jokeText.textContent=line;spawnBurst(jokeBtn)}
+  const leaderRef    = useRef<HTMLDivElement>(null);
+  const animalConfig = ANIMALS.find(a => a.id === animal);
 
-      nameInput.addEventListener('input',()=>{startBtn.disabled=!nameInput.value.trim()});
-      startBtn.addEventListener('click',onStart);
-      jokeBtn.addEventListener('click',onShowJoke);
+  // Sync to localStorage
+  useEffect(() => { saveRegs(registrations); }, [registrations]);
+  useEffect(() => { if (animal) setQty(1); }, [animal]);
 
-      setTimeout(()=>spawnBurst(startBtn),400);
-    })();
-  </script>
+  const validate = () => {
+    const e: Record<string,string> = {};
+    if (!name.trim())    e.name    = "Naam zaroori hai!";
+    if (!phone.trim())   e.phone   = "Phone zaroori hai!";
+    if (!city.trim())    e.city    = "City zaroori hai!";
+    if (!address.trim()) e.address = "Address zaroori hai!";
+    if (!animal)         e.animal  = "Jaanwar chunein!";
+    setErrors(e);
+    return Object.keys(e).length === 0;
+  };
+
+  const handleSubmit = useCallback(() => {
+    if (!validate() || !animal) return;
+    const isHissa = animalConfig?.hissa ?? false;
+    const newReg: Registration = {
+      id:      `${Date.now()}-${Math.random()}`,
+      name:    name.trim(),
+      phone:   phone.trim(),
+      address: address.trim(),
+      city:    city.trim(),
+      animal,
+      qty,
+      hissa:   isHissa,
+      photo,
+      time:    Date.now(),
+    };
+    setRegistrations(prev => [newReg, ...prev]);
+    setNewEntryId(newReg.id);
+    setResultReg(newReg);
+    setShowConfetti(true);
+    setTimeout(() => setShowConfetti(false), 5000);
+    setTimeout(() => setNewEntryId(null), 4000);
+    setActiveTab("leaderboard");
+    setTimeout(() => { leaderRef.current?.scrollIntoView({ behavior:"smooth" }); }, 200);
+    // reset form
+    setName(""); setPhone(""); setAddress(""); setCity(""); setAnimal(null); setQty(1); setPhoto(null); setErrors({});
+  }, [name, phone, address, city, animal, qty, photo, animalConfig]);
+
+  const openShare = (reg: Registration) => { setShareTarget(reg); setShowShareModal(true); };
+
+  const getMessage = (reg: Registration) => {
+    const a = ANIMALS.find(x => x.id === reg.animal)!;
+    if (a.hissa) return `${reg.name} bhai/behen, aapne ${a.name} mein ${reg.qty} hissa liya hai. Yeh azeemush-shan amal hai! Allah aapki qurbani qabool farmaye, duniya o aakhirat mein izzat ata kare. Ameen! 🤲🌙`;
+    return `${reg.name} bhai/behen, aapne ${reg.qty} ${a.name} ki qurbani ki niyat ki — SubhanAllah! Yeh sadqa-e-jaaria ban jaye. Qayamat ke din yeh qurbani apne khoon ke saath haazir hogi. Mubarak ho! 🌟🤲`;
+  };
+
+  return (
+    <div style={{ position:"relative" }}>
+      {step === "intro" && <IntroScreen onEnter={() => setStep("main")} />}
+      <Confetti show={showConfetti} />
+      {showShareModal && shareTarget && <ShareModal reg={shareTarget} onClose={() => setShowShareModal(false)} />}
+
+      {step === "main" && (
+        <div className="app-bg">
+          {/* BG Orbs */}
+          {[
+            { w:"500px",t:"-200px",l:"-150px",bg:"rgba(50,120,20,0.15)",dur:"10s",tx:"30px",ty:"40px" },
+            { w:"400px",b:"-100px",r:"-100px",bg:"rgba(212,175,55,0.1)", dur:"13s",tx:"-20px",ty:"30px" },
+            { w:"300px",t:"40%",r:"20%",bg:"rgba(80,160,40,0.08)",       dur:"9s", tx:"40px",ty:"-30px" },
+          ].map((o,i) => (
+            <div key={i} className="orb" style={{ width:o.w,height:o.w,top:(o as any).t,left:(o as any).l,right:(o as any).r,bottom:(o as any).b,background:`radial-gradient(circle,${o.bg},transparent 70%)`,["--dur" as any]:o.dur,["--tx" as any]:o.tx,["--ty" as any]:o.ty }} />
+          ))}
+          <Lanterns />
+
+          <div style={{ position:"relative",zIndex:1,maxWidth:"920px",margin:"0 auto",padding:"clamp(16px,4vw,50px) clamp(12px,4vw,28px)" }}>
+
+            {/* ── Header ── */}
+            <div style={{ textAlign:"center",marginBottom:"40px",animation:"fadeUp 0.8s ease both" }}>
+              <div style={{ fontSize:"3rem",marginBottom:"6px",animation:"moonFloat 4s ease-in-out infinite",filter:"drop-shadow(0 0 20px rgba(212,175,55,0.6))" }}>🌙</div>
+              <h1 className="eid-title" style={{ fontSize:"clamp(1.8rem,5vw,3.5rem)",marginBottom:"6px" }}>EID MUBARAK</h1>
+              <div className="gold-divider" />
+              <p style={{ fontFamily:"'Amiri',serif",color:"rgba(212,175,55,0.65)",fontSize:"1rem",marginTop:"8px" }}>Qurbani Leaderboard — بقرعید مبارک 🐐🐃🐪</p>
+              {/* LIVE count */}
+              <div style={{ display:"inline-flex",alignItems:"center",gap:"8px",marginTop:"12px",background:"rgba(76,175,80,0.1)",border:"1px solid rgba(76,175,80,0.3)",borderRadius:"30px",padding:"6px 16px" }}>
+                <span style={{ width:"8px",height:"8px",borderRadius:"50%",background:"#4caf50",boxShadow:"0 0 8px #4caf50",animation:"twinkle 1s ease-in-out infinite alternate",display:"inline-block" }} />
+                <span style={{ color:"#4caf50",fontSize:"0.85rem",fontWeight:600 }}>LIVE — {registrations.length} Qurbaaniyaan Register</span>
+              </div>
+            </div>
+
+            {/* ── Tabs ── */}
+            <div style={{ display:"flex",gap:"12px",marginBottom:"28px",background:"rgba(0,0,0,0.3)",border:"1px solid rgba(212,175,55,0.15)",borderRadius:"16px",padding:"6px" }}>
+              {([["leaderboard","🏆 Leaderboard"],["register","📝 Register Karein"]] as [string,string][]).map(([id,label]) => (
+                <button key={id} onClick={() => setActiveTab(id as any)} style={{ flex:1,padding:"12px",borderRadius:"12px",border:"none",cursor:"pointer",fontFamily:"'Cinzel Decorative',cursive",fontSize:"clamp(0.75rem,2vw,0.95rem)",fontWeight:700,transition:"all 0.3s",
+                  background: activeTab===id ? "linear-gradient(135deg,#d4af37,#8b6914)" : "transparent",
+                  color: activeTab===id ? "#0a0a0a" : "rgba(212,175,55,0.6)",
+                  boxShadow: activeTab===id ? "0 4px 16px rgba(212,175,55,0.3)" : "none",
+                }}>
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* ══════════════ LEADERBOARD TAB ══════════════ */}
+            {activeTab === "leaderboard" && (
+              <div ref={leaderRef} style={{ animation:"fadeUp 0.5s ease both" }}>
+
+                {/* Result card (after register) */}
+                {resultReg && (
+                  <div className="luxury-card result-card" style={{ padding:"clamp(20px,4vw,36px)",marginBottom:"28px" }}>
+                    <Confetti show={false} />
+                    <div style={{ textAlign:"center",marginBottom:"24px" }}>
+                      <div style={{ fontSize:"3.5rem",animation:"moonFloat 2s ease-in-out infinite" }}>🎊</div>
+                      <h2 className="eid-title" style={{ fontSize:"clamp(1.3rem,4vw,2.2rem)",marginTop:"8px" }}>Mubarak Ho, {resultReg.name}!</h2>
+                      <div className="gold-divider" />
+                    </div>
+                    {/* Summary */}
+                    <div style={{ display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:"12px",marginBottom:"20px" }}>
+                      {[
+                        ["👤 Naam",    resultReg.name],
+                        ["🏙️ City",    resultReg.city],
+                        ["🐾 Jaanwar", `${ANIMALS.find(a=>a.id===resultReg.animal)?.emoji} ${ANIMALS.find(a=>a.id===resultReg.animal)?.name.split(" ")[0]}`],
+                        [resultReg.hissa?"🔢 Hisse":"🔢 Jaanwar", `${resultReg.qty} ${resultReg.hissa?"Hisse":"Nos."}`],
+                      ].map(([l,v]) => (
+                        <div key={l} style={{ background:"rgba(212,175,55,0.06)",border:"1px solid rgba(212,175,55,0.15)",borderRadius:"10px",padding:"12px" }}>
+                          <div style={{ fontSize:"0.7rem",color:"rgba(212,175,55,0.5)",marginBottom:"3px" }}>{l}</div>
+                          <div style={{ color:"#f5e642",fontWeight:600,fontSize:"0.9rem" }}>{v}</div>
+                        </div>
+                      ))}
+                    </div>
+                    {/* Message */}
+                    <div style={{ background:"linear-gradient(135deg,rgba(76,175,80,0.1),rgba(33,150,43,0.05))",border:"1px solid rgba(76,175,80,0.25)",borderRadius:"14px",padding:"18px",marginBottom:"16px" }}>
+                      <div style={{ color:"#4caf50",fontWeight:600,marginBottom:"8px",fontSize:"0.85rem" }}>💬 Aapke Liye Khaas Paigham</div>
+                      <p style={{ color:"rgba(255,255,255,0.85)",lineHeight:"1.8",fontSize:"0.93rem" }}>{getMessage(resultReg)}</p>
+                    </div>
+                    {/* Halal Info */}
+                    <div style={{ background:"rgba(212,175,55,0.06)",border:"1px solid rgba(212,175,55,0.2)",borderRadius:"14px",padding:"18px",marginBottom:"16px" }}>
+                      <div className="section-title gold-text" style={{ fontSize:"0.9rem",marginBottom:"10px" }}>🔪 Halal Ka Tareeqa — {ANIMALS.find(a=>a.id===resultReg.animal)?.name}</div>
+                      <p style={{ color:"rgba(212,175,55,0.75)",lineHeight:"1.8",fontSize:"0.88rem" }}>{ANIMALS.find(a=>a.id===resultReg.animal)?.halal}</p>
+                    </div>
+                    {/* Dua */}
+                    <div style={{ textAlign:"center",background:"rgba(212,175,55,0.03)",borderRadius:"14px",padding:"16px",marginBottom:"16px",border:"1px dashed rgba(212,175,55,0.2)" }}>
+                      <div style={{ fontFamily:"'Amiri',serif",direction:"rtl",fontSize:"1.5rem",color:"#d4af37",marginBottom:"6px" }}>تَقَبَّلَ اللَّهُ مِنَّا وَمِنْكُمْ</div>
+                      <div style={{ color:"rgba(212,175,55,0.5)",fontSize:"0.8rem" }}>Allah hamaari aur aapki qurbani qabool farmaye</div>
+                    </div>
+                    {/* Joke */}
+                    <div className="joke-card" style={{ marginBottom:"16px" }}>
+                      <div style={{ color:"#d4af37",fontWeight:600,marginBottom:"6px",fontSize:"0.8rem" }}>😂 EID TO DETE JAO!</div>
+                      <p style={{ color:"rgba(255,255,255,0.8)",fontSize:"0.92rem",lineHeight:"1.7" }}>{JOKES[jokeIdx]}</p>
+                    </div>
+                    {/* Share Button */}
+                    <button onClick={() => openShare(resultReg)} style={{ width:"100%",padding:"14px",background:"linear-gradient(135deg,#25D366,#128C7E)",border:"none",borderRadius:"12px",color:"white",cursor:"pointer",fontFamily:"'Cinzel Decorative',cursive",fontSize:"0.95rem",fontWeight:700,boxShadow:"0 6px 20px rgba(37,211,102,0.3)",transition:"all 0.2s" }}
+                      onMouseEnter={e=>(e.currentTarget.style.transform="translateY(-2px)")} onMouseLeave={e=>(e.currentTarget.style.transform="translateY(0)")}>
+                      📤 Share Karein — Doston Ko Bulao!
+                    </button>
+                    <button onClick={() => setResultReg(null)} style={{ display:"block",width:"100%",marginTop:"10px",padding:"10px",background:"transparent",border:"1px solid rgba(255,255,255,0.1)",borderRadius:"12px",color:"rgba(255,255,255,0.3)",cursor:"pointer",fontSize:"0.8rem" }}>Hatao ✕</button>
+                  </div>
+                )}
+
+                {/* ── Leaderboard ── */}
+                <div className="luxury-card" style={{ padding:"clamp(16px,4vw,32px)" }}>
+                  <div style={{ display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:"24px",flexWrap:"wrap",gap:"12px" }}>
+                    <div>
+                      <div className="section-title gold-text" style={{ fontSize:"1.2rem" }}>🏆 Qurbani Leaderboard</div>
+                      <div style={{ color:"rgba(212,175,55,0.45)",fontSize:"0.8rem",marginTop:"4px" }}>Sab se pehle register karne waale</div>
+                    </div>
+                    <button onClick={() => setActiveTab("register")} className="submit-btn" style={{ width:"auto",padding:"10px 20px",fontSize:"0.85rem" }}>
+                      + Register Karein
+                    </button>
+                  </div>
+
+                  {registrations.length === 0 ? (
+                    <div style={{ textAlign:"center",padding:"60px 20px" }}>
+                      <div style={{ fontSize:"4rem",marginBottom:"16px",animation:"moonFloat 3s ease-in-out infinite" }}>🌙</div>
+                      <div style={{ fontFamily:"'Cinzel Decorative',cursive",color:"rgba(212,175,55,0.5)",fontSize:"1.1rem",marginBottom:"8px" }}>Abhi Koi Nahi Hai!</div>
+                      <div style={{ color:"rgba(212,175,55,0.35)",fontSize:"0.85rem",marginBottom:"24px" }}>Pehle register kar ke #1 ban jao 👑</div>
+                      <button onClick={() => setActiveTab("register")} className="submit-btn" style={{ width:"auto",padding:"12px 32px" }}>🐐 Register Karein</button>
+                    </div>
+                  ) : (
+                    <div style={{ display:"flex",flexDirection:"column",gap:"10px" }}>
+                      {registrations.map((reg, i) => (
+                        <div key={reg.id} style={{ position:"relative" }}>
+                          <LeaderboardCard reg={reg} index={i} isNew={reg.id===newEntryId} />
+                          <button
+                            onClick={() => openShare(reg)}
+                            style={{ position:"absolute",right:"0",top:"50%",transform:"translateY(-50%) translateX(110%)",background:"rgba(37,211,102,0.15)",border:"1px solid rgba(37,211,102,0.3)",borderRadius:"8px",color:"#25D366",padding:"6px 10px",cursor:"pointer",fontSize:"0.75rem",whiteSpace:"nowrap",transition:"all 0.2s" }}
+                            onMouseEnter={e=>{(e.currentTarget.style.background="rgba(37,211,102,0.3)")} }
+                            onMouseLeave={e=>{(e.currentTarget.style.background="rgba(37,211,102,0.15)")} }
+                          >
+                            📤
+                          </button>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+
+                  {/* Stats */}
+                  {registrations.length > 0 && (
+                    <div style={{ marginTop:"28px",paddingTop:"20px",borderTop:"1px solid rgba(212,175,55,0.1)" }}>
+                      <div style={{ color:"rgba(212,175,55,0.4)",fontSize:"0.75rem",marginBottom:"12px",textAlign:"center" }}>📊 AAAJ KI STATS</div>
+                      <div style={{ display:"grid",gridTemplateColumns:"repeat(3,1fr)",gap:"10px" }}>
+                        {[
+                          ["🐐", "Bakre", registrations.filter(r=>r.animal==="bakra").reduce((a,r)=>a+r.qty,0)+" Nos"],
+                          ["🐃", "Bhes",  registrations.filter(r=>r.animal==="bhes").reduce((a,r)=>a+r.qty,0)+" Hisse"],
+                          ["🐪", "Oont",  registrations.filter(r=>r.animal==="camel").reduce((a,r)=>a+r.qty,0)+" Hisse"],
+                        ].map(([e,n,v]) => (
+                          <div key={n} style={{ textAlign:"center",background:"rgba(212,175,55,0.05)",borderRadius:"10px",padding:"10px" }}>
+                            <div style={{ fontSize:"1.5rem" }}>{e}</div>
+                            <div style={{ color:"rgba(212,175,55,0.5)",fontSize:"0.7rem" }}>{n}</div>
+                            <div style={{ color:"#f5e642",fontWeight:700,fontSize:"0.9rem" }}>{v}</div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {/* ══════════════ REGISTER TAB ══════════════ */}
+            {activeTab === "register" && (
+              <div className="luxury-card" style={{ padding:"clamp(20px,4vw,40px)",animation:"fadeUp 0.5s ease both" }}>
+
+                {/* Photo Upload */}
+                <div style={{ marginBottom:"28px",textAlign:"center" }}>
+                  <div className="section-title gold-text" style={{ marginBottom:"16px" }}>📷 Apni Photo Lagaayein (Optional)</div>
+                  <PhotoUpload value={photo} onChange={setPhoto} />
+                </div>
+
+                <div className="gold-divider" style={{ marginBottom:"28px" }} />
+
+                {/* Personal Info */}
+                <div style={{ marginBottom:"28px" }}>
+                  <div className="section-title gold-text" style={{ marginBottom:"18px" }}>👤 Personal Info</div>
+                  <div style={{ display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(240px,1fr))",gap:"16px" }}>
+                    {/* Name */}
+                    <div>
+                      <label style={{ display:"block",color:"rgba(212,175,55,0.6)",fontSize:"0.8rem",marginBottom:"6px" }}>Pura Naam *</label>
+                      <input className="gold-input" placeholder="Apna naam likhein..." value={name} onChange={e=>{setName(e.target.value);setErrors(p=>({...p,name:""}))}} />
+                      {errors.name && <p style={{ color:"#ff6b6b",fontSize:"0.75rem",marginTop:"4px" }}>⚠ {errors.name}</p>}
+                    </div>
+                    {/* Phone */}
+                    <div>
+                      <label style={{ display:"block",color:"rgba(212,175,55,0.6)",fontSize:"0.8rem",marginBottom:"6px" }}>Phone Number *</label>
+                      <input className="gold-input" placeholder="+92 300 0000000" value={phone} onChange={e=>{setPhone(e.target.value);setErrors(p=>({...p,phone:""}))}} type="tel" />
+                      {errors.phone && <p style={{ color:"#ff6b6b",fontSize:"0.75rem",marginTop:"4px" }}>⚠ {errors.phone}</p>}
+                    </div>
+                    {/* City */}
+                    <div>
+                      <label style={{ display:"block",color:"rgba(212,175,55,0.6)",fontSize:"0.8rem",marginBottom:"6px" }}>City *</label>
+                      <input className="gold-input" placeholder="Karachi, Lahore, etc..." value={city} onChange={e=>{setCity(e.target.value);setErrors(p=>({...p,city:""}))}} />
+                      {errors.city && <p style={{ color:"#ff6b6b",fontSize:"0.75rem",marginTop:"4px" }}>⚠ {errors.city}</p>}
+                    </div>
+                    {/* Address */}
+                    <div>
+                      <label style={{ display:"block",color:"rgba(212,175,55,0.6)",fontSize:"0.8rem",marginBottom:"6px" }}>Address *</label>
+                      <input className="gold-input" placeholder="Mohalla, area..." value={address} onChange={e=>{setAddress(e.target.value);setErrors(p=>({...p,address:""}))}} />
+                      {errors.address && <p style={{ color:"#ff6b6b",fontSize:"0.75rem",marginTop:"4px" }}>⚠ {errors.address}</p>}
+                    </div>
+                  </div>
+                </div>
+
+                <div className="gold-divider" style={{ marginBottom:"28px" }} />
+
+                {/* Animal Selection */}
+                <div style={{ marginBottom:"28px" }}>
+                  <div className="section-title gold-text" style={{ marginBottom:"18px" }}>🐾 Jaanwar Chunein *</div>
+                  {errors.animal && <p style={{ color:"#ff6b6b",fontSize:"0.75rem",marginBottom:"12px" }}>⚠ {errors.animal}</p>}
+                  <div style={{ display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(180px,1fr))",gap:"14px" }}>
+                    {ANIMALS.map((a, i) => (
+                      <div key={a.id} className={`animal-card ${animal===a.id?"selected":""}`} style={{ animationDelay:`${i*0.1}s` }} onClick={() => { setAnimal(a.id); setErrors(p=>({...p,animal:""})); }}>
+                        {animal===a.id && <div style={{ position:"absolute",top:"10px",right:"12px",color:"#d4af37",fontSize:"1rem" }}>✓</div>}
+                        <span className="animal-emoji" style={{ animationDelay:`${i*0.3}s` }}>{a.emoji}</span>
+                        <div style={{ fontFamily:"'Cinzel Decorative',cursive",fontSize:"0.8rem",color:"#d4af37",fontWeight:700,marginBottom:"3px" }}>{a.name}</div>
+                        <div style={{ fontFamily:"'Amiri',serif",color:"rgba(212,175,55,0.55)",fontSize:"1rem",direction:"rtl" }}>{a.urdu}</div>
+                        <div style={{ fontSize:"0.7rem",color:"rgba(212,175,55,0.4)",marginTop:"6px",background:"rgba(212,175,55,0.07)",borderRadius:"6px",padding:"3px 8px" }}>{a.price}</div>
+                      </div>
+                    ))}
+                  </div>
+
+                  {/* Animal photo */}
+                  {animal && animalConfig && (
+                    <div style={{ marginTop:"20px",animation:"fadeUp 0.4s ease both" }}>
+                      <div className="animal-photo"><img src={animalConfig.img} alt={animalConfig.name} style={{ width:"100%",height:"220px",objectFit:"cover",display:"block" }} /></div>
+                      {animalConfig.hissa && (
+                        <div className="hissa-info" style={{ marginTop:"10px" }}>ℹ️ <strong style={{ color:"#d4af37" }}>{animalConfig.name}</strong> mein maksimum <strong style={{ color:"#d4af37" }}>7 hisse</strong> hote hain.</div>
+                      )}
+                    </div>
+                  )}
+                </div>
+
+                {/* Quantity */}
+                {animal && animalConfig && (
+                  <div style={{ marginBottom:"32px",animation:"fadeUp 0.4s ease both" }}>
+                    <div className="gold-divider" style={{ marginBottom:"24px" }} />
+                    <div className="section-title gold-text" style={{ marginBottom:"18px" }}>
+                      {animalConfig.hissa ? "🔢 Kitne Hisse Loge?" : "🔢 Kitne Bakre?"}
+                    </div>
+                    <div style={{ display:"flex",alignItems:"center",justifyContent:"center",gap:"24px" }}>
+                      <button className="qty-btn" onClick={() => setQty(q => Math.max(1,q-1))}>−</button>
+                      <div className="qty-display">{qty}</div>
+                      <button className="qty-btn" onClick={() => setQty(q => animalConfig.hissa ? Math.min(7,q+1) : q+1)}>+</button>
+                    </div>
+                    <div style={{ textAlign:"center",marginTop:"10px",color:"rgba(212,175,55,0.55)",fontSize:"0.82rem" }}>
+                      {animalConfig.hissa ? `${qty} hissa le rahe ho — ${7-qty} baaki` : `${qty} ${animalConfig.name} ki qurbani`}
+                    </div>
+                    {animalConfig.hissa && (
+                      <div style={{ display:"flex",gap:"5px",justifyContent:"center",marginTop:"12px" }}>
+                        {Array.from({length:7},(_,i) => (
+                          <div key={i} style={{ width:"28px",height:"9px",borderRadius:"4px",border:"1px solid rgba(212,175,55,0.25)",background:i<qty?"linear-gradient(90deg,#d4af37,#f5e642)":"rgba(212,175,55,0.1)",transition:"all 0.3s",transform:i<qty?"scaleY(1.3)":"scaleY(1)" }} />
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Submit */}
+                <button className="submit-btn" onClick={handleSubmit}>
+                  🌙 Register Karein & Leaderboard Mein Aao 🌙
+                </button>
+              </div>
+            )}
+
+            {/* ── Social & Footer ── */}
+            <footer style={{ textAlign:"center",marginTop:"50px",paddingBottom:"40px",animation:"fadeUp 0.8s ease 0.5s both" }}>
+              <div className="gold-divider" />
+              <div style={{ marginTop:"20px",display:"flex",gap:"12px",justifyContent:"center",flexWrap:"wrap" }}>
+                {["@anas.saka_","@phising.attaker"].map(h => (
+                  <a key={h} href={`https://instagram.com/${h.replace("@","")}`} target="_blank" rel="noreferrer"
+                    style={{ display:"flex",alignItems:"center",gap:"6px",background:"rgba(212,175,55,0.09)",border:"1px solid rgba(212,175,55,0.3)",borderRadius:"50px",padding:"8px 18px",color:"#d4af37",fontSize:"0.85rem",fontWeight:600,textDecoration:"none",transition:"all 0.2s" }}
+                    onMouseEnter={e=>{(e.currentTarget as HTMLElement).style.background="rgba(212,175,55,0.2)"}}
+                    onMouseLeave={e=>{(e.currentTarget as HTMLElement).style.background="rgba(212,175,55,0.09)"}}>
+                    <span>📸</span>{h}
+                  </a>
+                ))}
+              </div>
+              <div style={{ marginTop:"18px",fontFamily:"'Cinzel Decorative',cursive",fontSize:"0.88rem" }}>
+                <span style={{ color:"rgba(212,175,55,0.4)" }}>Made with </span>
+                <span style={{ color:"#d4af37" }}>❤️</span>
+                <span style={{ color:"rgba(212,175,55,0.4)" }}> by </span>
+                <span className="gold-text" style={{ fontWeight:700 }}>ANAS SAKA</span>
+                <span style={{ fontSize:"1.1rem",marginLeft:"6px" }}>🇵🇸</span>
+              </div>
+              <p style={{ color:"rgba(212,175,55,0.22)",fontSize:"0.7rem",marginTop:"14px" }}>🌙 Eid ul-Adha Mubarak — Qurbani Qabool Ho 🤲</p>
+            </footer>
+
+          </div>
+        </div>
+      )}
+    </div>
+  );
+}
+
+
+        // Mount the application
+        const rootElement = document.getElementById('root');
+        const root = ReactDOM.createRoot(rootElement);
+        root.render(<App />);
+    </script>
 </body>
 </html>
